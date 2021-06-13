@@ -64,12 +64,12 @@
                                     <option value="Admin" <?php if ($row['role'] == "Admin") {
                                                               echo "selected";
                                                             } ?>>Admin</option>
-                                    <option value="Dosen" <?php if ($row['role'] == "Dosen") {
+                                    <option value="Peserta" <?php if ($row['role'] == "Peserta") {
                                                                 echo "selected";
-                                                              } ?>>Dosen</option>
-                                    <option value="Mahasiswa" <?php if ($row['role'] == "Mahasiswa") {
+                                                              } ?>>Peserta</option>
+                                    <option value="Pembimbing" <?php if ($row['role'] == "Pembimbing") {
                                                                 echo "selected";
-                                                              } ?>>Mahasiswa</option>
+                                                              } ?>>Pembimbing</option>
                             </select>
                         </div>
                     </div>

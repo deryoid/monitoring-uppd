@@ -8,12 +8,12 @@ require 'config/config.php';
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="shortcut icon" href="{{ asset ('assets/dist/img/favicon1.png') }}">
-  <title>Magangku Login V.2</title>
+ <link rel="shortcut icon" href="<?= base_url() ?>/assets/dist/img/logo-kalsel.png">
+  <title>Aplikasi Monitoring Peserta PKL UPPD SAMSAT KANDANGAN</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="shortcut icon" href="<?= base_url() ?>/assets/dist/img/favicon1.png">
+  <link rel="shortcut icon" href="<?= base_url() ?>/assets/dist/img/logo-kalsel.png">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -26,7 +26,7 @@ require 'config/config.php';
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-color: #FFD700;">
   <div class="login-box">
 
     <!-- /.login-logo -->
@@ -34,8 +34,9 @@ require 'config/config.php';
       <div class="login-logo">
         <br>
         <h3>
-          <img src="<?= base_url() ?>/assets/dist/img/logomagangku.png" style="margin-top: 20px; margin-bottom: 20px;" width="210px;" height="150px;"><br>
-          <b>UPPL <br> UNISKA <br> BANJARMASIN</b></h3>
+        <b>UPPD SAMSAT KANDANGAN</b>
+          <img src="<?= base_url() ?>/assets/dist/img/logo-kalsel.png" style="margin-top: 20px; margin-bottom: 20px;" width="210px;" height="200px;"><br>
+          <b>Aplikasi Monitoring Peserta <br> Praktrik Kerja Lapangan</b></h3>
       </div>
       <div class="card-body login-card-body">
         <!-- <p class="login-box-msg">Sign in to start your session</p> -->
@@ -48,23 +49,23 @@ require 'config/config.php';
 
         <form action="" method="POST">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" name="username" placeholder="Username" required="">
+            <input type="text" class="form-control" name="username" placeholder="Masukkan Username" required="">
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-user-circle"></span>
+                <span class="fas fa-user"></span>
               </div>
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" name="password" id="pass" placeholder="Password" required="">
+            <input type="password" class="form-control" name="password" id="pass" placeholder="Masukkan Password" required="">
             <div class="input-group-append">
               <div class="input-group-text" id="lihatpass">
-                <span class="fas fa-eye" title="Lihat Password" onclick="change();"></span>
+                <span class="fas fa-key" title="Lihat Password" onclick="change();"></span>
               </div>
             </div>
           </div>
 
-          <button type="submit" name="login" class="btn btn-success btn-block btn-xm"><i class="fa fa-sign-in-alt mr-1"></i>Masuk</button>
+          <button type="submit" name="login" class="btn btn-warning bg-gradient-warning btn-lg float-right"><i class="fa fa-sign-in-alt mr-2"></i><b> Login</b></button>
           <br>
         </form>
 
@@ -112,7 +113,7 @@ if (isset($_POST['login'])) {
   $pass = mysqli_real_escape_string($koneksi, $_POST['password']);
   $pass = md5($pass);
 
-  $query = mysqli_query($koneksi, "SELECT * FROM user AS u LEFT JOIN mahasiswa AS m ON u.id_user = m.id_user LEFT JOIN dosen AS d ON u.id_user = d.id_user
+  $query = mysqli_query($koneksi, "SELECT * FROM user AS u LEFT JOIN peserta AS m ON u.id_user = m.id_user LEFT JOIN pembimbing AS d ON u.id_user = d.id_user
                      WHERE u.username = '$user' AND u.password = '$pass'");
   $row = mysqli_fetch_array($query);
 
@@ -120,22 +121,22 @@ if (isset($_POST['login'])) {
   $password  = $row['password'];
   $role      = $row['role'];
   $id_user   = $row['id_user'];
-  $id_mhs    = $row['id_mhs'];
-  $id_dosen  = $row['id_dosen'];
+  $id_peserta = $row['id_peserta'];
+  $id_pembimbing  = $row['id_pembimbing'];
   
 
   if ($user == $username && $pass == $password) {
-    if ($role == "Mahasiswa") {
-        $_SESSION['id_mhs']    = $id_mhs;
+    if ($role == "Peserta") {
+        $_SESSION['id_peserta']    = $id_peserta;
         $_SESSION['id_user']   = $id_user;
         $_SESSION['role'] = $role;
-    echo "<script>window.location.replace('mahasiswa/');</script>";
+    echo "<script>window.location.replace('peserta/');</script>";
 
-    }elseif ($role == "Dosen") {
-        $_SESSION['id_dosen']  = $id_dosen;
+    }elseif ($role == "Pembimbing") {
+        $_SESSION['id_pembimbing']  = $id_pembimbing;
         $_SESSION['id_user']   = $id_user;
         $_SESSION['role'] = $role;
-        echo "<script>window.location.replace('dosen/');</script>";
+        echo "<script>window.location.replace('pembimbing/');</script>";
   }elseif ($role == "Admin") {
         $_SESSION['id_user']   = $id_user;
         $_SESSION['role'] = $role;

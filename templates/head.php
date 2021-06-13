@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="cache-control" content="no-cache">
 
-  <title>Magangku V.2</title>
+  <title>Aplikasi Monitoring Peserta PKL UPPD SAMSAT KANDANGAN</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="shortcut icon" href="<?= base_url() ?>/assets/dist/img/favicon1.png">
+  <link rel="shortcut icon" href="<?= base_url() ?>/assets/dist/img/logo-kalsel.png">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->

@@ -58,8 +58,8 @@
                             <select class="form-control select2" data-placeholder="Pilih Role" id="role" name="role" required="">
                                 <option value="">-Pilih-</option>
                                 <option value="Admin">Admin</option>
-                                <option value="Dosen">Dosen</option>
-                                <option value="Mahasiswa">Mahasiswa</option>
+                                <option value="Peserta">Peserta</option>
+                                <option value="Pembimbing">Pembimbing</option>
                             </select>
                         </div>
                     </div>
@@ -106,18 +106,18 @@
         $password = md5($_POST['password']);
         $role  = $_POST['role'];
 
-    $submit = $koneksi->query("INSERT INTO user VALUES ('','$username', '$password', '$role')");
+    $submit = $koneksi->query("INSERT INTO user VALUES (NULL,'$username', '$password', '$role')");
 
     if ($submit) {
-        if ($role == "Mahasiswa"){
+        if ($role == "Peserta"){
         $idum =  $koneksi->query("SELECT * FROM user ORDER BY id_user DESC LIMIT 1")->fetch_array();
-        $koneksi->query("INSERT INTO mahasiswa (id_user) VALUES ('$idum[id_user]')");
+        $koneksi->query("INSERT INTO peserta (id_user) VALUES ('$idum[id_user]')");
 
-        $datau = $koneksi->query("SELECT * FROM mahasiswa WHERE id_user = '$idum[id_user]'")->fetch_array();
-        $koneksi->query("INSERT INTO daftarppl (id_mhs) VALUES ('$datau[id_mhs]')");
-    }elseif ($role == "Dosen") {
+        $datau = $koneksi->query("SELECT * FROM Peserta WHERE id_user = '$idum[id_user]'")->fetch_array();
+        $koneksi->query("INSERT INTO daftarpkl (id_peserta) VALUES ('$datau[id_peserta]')");
+    }elseif ($role == "Pembimbing") {
         $idud =  $koneksi->query("SELECT * FROM user ORDER BY id_user DESC LIMIT 1")->fetch_array();
-        $koneksi->query("INSERT INTO dosen (id_user) VALUES ('$idud[id_user]')");
+        $koneksi->query("INSERT INTO pembimbing (id_user) VALUES ('$idud[id_user]')");
     }
         $_SESSION['pesan'] = "Data Berhasil Ditambahkan";
         echo "<script>window.location.replace('../user/');</script>";

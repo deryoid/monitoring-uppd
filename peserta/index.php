@@ -52,7 +52,7 @@
             <div class="card card-widget" >
               <div class="card-header" style="background-color:dodgerblue;">
                 <div class="user-block">
-                  <img class="img-circle" src="<?= base_url() ?>/assets/dist/img/favicon1.png" alt="User Image">
+                  <img class="img-circle" src="<?= base_url() ?>/assets/dist/img/logo-kalsel.png" alt="User Image">
                   <span class="username" ><a href="#" style="color:white;">UPPL UNISKA</a></span>
                   <span class="description" style="color:white;">Diposting pada <?php echo tgl_indo($p['tgl_p']);?></span>
                 </div>

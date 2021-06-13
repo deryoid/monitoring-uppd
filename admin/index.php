@@ -40,36 +40,7 @@
         
         <div class="row">
         <div class="card col-md-12">
-          <div class="card-header">
-            <center><h3>Data Mahasiswa Per-Sekolah</h3></center>
-          </div>
-            <div class="card-body">
-            <table id="" class="table table-bordered table-striped" style="background-color: ">
-                    <thead>
-                    <tr align="center"></tr>
-                        <th>Sekolah</th>
-                        <th>Jumlah Mahasiswa</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php 
-                            $no = 1;
-                            $data = $koneksi->query("SELECT * FROM daftarppl AS dp 
-                                                        LEFT JOIN mahasiswa AS m  ON dp.id_mhs = m.id_mhs
-                                                        LEFT JOIN sekolah AS s ON dp.id_sekolah = s.id_sekolah GROUP BY dp.id_sekolah");
-                            while ($row = $data->fetch_array()) {
-                              $hitungmhs = $koneksi->query("SELECT COUNT(id_daftar) AS total FROM daftarppl WHERE id_sekolah = '".$row['id_sekolah']."'");
-                              $total = mysqli_fetch_array($hitungmhs);
-                        ?>
-                        <tr>
-                          <td><?= $row['nama_sekolah'] ?></td>
-                          <td><?= $total['total'] ?></td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
+          
         </div>
         </div>
 
