@@ -31,10 +31,10 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
 
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-warning" role="alert">
           <h5><b>
             <i class="fa fa-info-circle"></i>
-            "Selamat Datang Di Aplikasi Administrasi PLP UNISKA BANJARMASIN"
+            "Selamat Datang Datang DiAplikasi Monitoring Praktrek Kerja Lapangan UPPD Samsat Kandangan"
           </b></h5>
         </div>
         

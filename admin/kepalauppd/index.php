@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <div class="row">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Data Kepala UPPL</h1>
+            <h1 class="m-0 text-dark">Data Kepala UPPD</h1>
         </div>
 
         </div>
@@ -46,7 +46,7 @@
                 <tr align="center"></tr>
                     <th>No</th>
                     <th>NIP/NIK/NIDN</th>
-                    <th>Kepala UPPL</th>
+                    <th>Kepala UPPD</th>
                     <th>Jabatan</th>
                     <th>Pilihan</th>
                 </tr>
@@ -55,13 +55,13 @@
                 <tbody>
                     <?php 
                         $no = 1;
-                        $data = $koneksi->query("SELECT * FROM ttd_uppl ORDER BY idTtd ASC");
+                        $data = $koneksi->query("SELECT * FROM ttd_uppd ORDER BY idTtd ASC");
                         while ($row = $data->fetch_array()) {
                      ?>
                     <tr>
                     <td align="center"><?= $no++; ?></td>
                     <td><?= $row['nip'] ?></td>
-                    <td><?= $row['kepalaUppl'] ?></td>
+                    <td><?= $row['kepalaUppd'] ?></td>
                     <td><?= $row['jabatan'] ?></td>
                         <td align="center">
                             <a href="edit?id=<?= $row['idTtd'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>

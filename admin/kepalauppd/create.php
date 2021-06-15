@@ -25,7 +25,7 @@
         <div class="col-md-12">
             <div class="card card-dark">
                 <div class="card-header">
-                    <h3 class="card-title">Form Tambah Kepala UPPL</h3>
+                    <h3 class="card-title">Form Tambah Kepala UPPD</h3>
                 </div>
 
             <form class="form-horizontal" method="post" action="">
@@ -39,9 +39,9 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nama Kepala UPPL</label>
+                        <label class="col-sm-2 col-form-label">Nama Kepala UPPD</label>
                         <div class="col-sm-4">
-                        <input type="text" class="form-control" name="kepalaUppl" required="">
+                        <input type="text" class="form-control" name="kepalaUppd" required="">
                         </div>
                     </div>
 
@@ -87,14 +87,14 @@
 <?php 
     if (isset($_POST['submit'])) {
         $nip        = $_POST['nip'];
-        $kepalaUppl = $_POST['kepalaUppl'];
+        $kepalaUppd = $_POST['kepalaUppd'];
         $jabatan    = $_POST['jabatan'];
 
-    $submit = $koneksi->query("INSERT INTO ttd_uppl VALUES ('', '$nip', '$kepalaUppl', '$jabatan')");
+    $submit = $koneksi->query("INSERT INTO ttd_uppd VALUES (NULL, '$nip', '$kepalaUppd', '$jabatan')");
 
     if ($submit) {
         $_SESSION['pesan'] = "Data Berhasil Ditambahkan";
-        echo "<script>window.location.replace('../kepalauppl/');</script>";
+        echo "<script>window.location.replace('../kepalauppd/');</script>";
     }
 }
 

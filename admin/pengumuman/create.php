@@ -93,7 +93,7 @@
         $judul            = $_POST['judul'];
         $isi            = $_POST['isi'];
 
-    $submit = $koneksi->query("INSERT INTO pengumuman VALUES ('', '$judul', '$isi', CURRENT_DATE())");
+    $submit = $koneksi->query("INSERT INTO pengumuman VALUES (NULL, '$judul', '$isi', CURRENT_DATE())");
     
     if ($submit) {
         $_SESSION['pesan'] = "Data Berhasil Ditambahkan";

@@ -48,12 +48,12 @@
                 <thead>
                 <tr align="center"></tr>
                     <!-- <th>No</th> -->
-                    <th>NPM</th>
+                    <th>NPM/NIM/NIS</th>
                     <th>Nama</th>
-                    <th>Prodi</th>
-                    <th>Dosen Pembimbing</th>
-                    <th>Sekolah</th>
-                    <th>Tanggal PPL</th>
+                    <th>Prodi/Jurusan</th>
+                    <th>Pembimbing</th>
+                    <th>Bagian</th>
+                    <th>Tanggal PKL</th>
                     <th>No.Telp</th>
                     <th>Verifikasi</th>
                     <th>Pilihan</th>
@@ -63,10 +63,10 @@
                 <tbody>
                     <?php 
                         $no = 1;
-                        $data = $koneksi->query("SELECT * FROM daftarppl AS dp 
-                                                    LEFT JOIN mahasiswa AS m  ON dp.id_mhs = m.id_mhs
-                                                    LEFT JOIN sekolah AS s ON dp.id_sekolah = s.id_sekolah
-                                                    LEFT JOIN dosen AS d ON dp.id_dosen = d.id_dosen
+                        $data = $koneksi->query("SELECT * FROM daftarpkl AS dp 
+                                                    LEFT JOIN peserta AS p  ON dp.id_peserta = p.id_peserta
+                                                    LEFT JOIN bagian AS bg ON dp.id_bagian = bg.id_bagian
+                                                    LEFT JOIN pembimbing AS pm ON dp.id_pembimbing = pm.id_pembimbing
                                                   ORDER BY dp.id_daftar DESC");
                         while ($row = $data->fetch_array()) {
                      ?>
@@ -75,8 +75,8 @@
                     <td><?= $row['npm'] ?></td>
                     <td><?= $row['nama'] ?></td>
                     <td><?= $row['prodi'] ?></td>
-                    <td><?= $row['nama_dosen'] ?></td>
-                    <td><?= $row['nama_sekolah'] ?></td>
+                    <td><?= $row['nama_pembimbing'] ?></td>
+                    <td><?= $row['nama_bagian'] ?></td>
                     <td>
                         <?php if($row['tgl_awal']=='0000-00-00' OR $row['tgl_akhir']=='0000-00-00'){
                             echo " - "; } else { echo tgl_indo($row['tgl_awal'])." S/d ".tgl_indo($row['tgl_akhir']); } 

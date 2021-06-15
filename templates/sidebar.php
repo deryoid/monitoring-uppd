@@ -71,10 +71,10 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?=base_url('admin/kepalauppl/')?>" class="nav-link">
+                <a href="<?=base_url('admin/kepalauppd/')?>" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
-                    Kepala UPPL
+                    Kepala UPPD
                   </p>
                 </a>
               </li> 
@@ -93,28 +93,28 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>
-                Mahasiswa
+                Peserta
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?=base_url('admin/mahasiswa/')?>" class="nav-link">
+                <a href="<?=base_url('admin/peserta/')?>" class="nav-link">
                   <i class="nav-icon fas fa-list"></i>
                   <p>
-                    Daftar PPL
+                    Daftar PKL
                   </p>
                 </a>
               </li> 
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?=base_url('admin/statusakhirmhs/')?>" class="nav-link">
+                <a href="<?=base_url('admin/statusakhirpeserta/')?>" class="nav-link">
                   <i class="nav-icon fas fa-list"></i>
                   <p>
-                    Status Akhir PPL
+                    Status Akhir PKL
                   </p>
                 </a>
               </li> 
@@ -124,24 +124,24 @@
          
 
           <li class="nav-item">
-            <a href="<?=base_url('admin/sekolah/')?>" class="nav-link">
-              <i class="nav-icon fas fa-school"></i>
+            <a href="<?=base_url('admin/bagian/')?>" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
               <p>
-                Sekolah
+                Bagian
               </p>
             </a>
           </li>
           
           <li class="nav-item">
-            <a href="<?=base_url('admin/dosen/')?>" class="nav-link">
-              <i class="nav-icon fas fa-university"></i>
+            <a href="<?=base_url('admin/pembimbing/')?>" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
               <p>
-                Dosen
+                Pembimbing
               </p>
             </a>
           </li>
 
-          <li class="nav-item has-treeview">
+          <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-envelope"></i>
               <p>
@@ -165,7 +165,7 @@
               </li>
 
             </ul>
-          </li>  
+          </li>   -->
 
         </ul>
       </nav>
