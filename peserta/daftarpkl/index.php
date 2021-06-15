@@ -33,7 +33,7 @@ $datappl = $koneksi->query("SELECT * FROM daftarpkl AS dp
         <div class="card-header">
             <h3 class="card-title">
               <?php if ($datappl['status'] == "Terverifikasi") { ?>
-                <a href="suratpengantar?id=<?=$datappl['id_mhs']?>" class="btn btn-info" target="blank"><i class="fa fa-file-alt mr-1"></i>Cetak Surat Pengantar Sekolah</a>
+                <a href="suratpengantar?id=<?=$datappl['id_peserta']?>" class="btn btn-info" target="blank"><i class="fa fa-file-alt mr-1"></i>Cetak Surat Balasan</a>
               <?php }else{} ?>
               <!-- <a href="printbukti" class="btn btn-info"><i class="fa fa-file-alt mr-1"></i>Bukti Verifikasi</a> -->
             </h3>

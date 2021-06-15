@@ -137,6 +137,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?=base_url('admin/agendapeserta/')?>" class="nav-link">
+              <i class="nav-icon fas fa-list-alt"></i>
+              <p>
+                Agenda Peserta
+              </p>
+            </a>
+          </li>
 
           <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -235,13 +243,13 @@
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-              <a href="<?=base_url('mahasiswa/agendamhs/')?>" class="nav-link">
+              <a href="<?=base_url('peserta/agendapeserta/')?>" class="nav-link">
                   <i class="fas fa-minus nav-icon"></i>
                   <p>Agenda PKL</p>
                 </a>
               </li>              
               <li class="nav-item">
-              <a href="<?=base_url('mahasiswa/nilaimhs/')?>" class="nav-link">
+              <a href="<?=base_url('peserta/nilaipeserta/')?>" class="nav-link">
                   <i class="fas fa-minus nav-icon"></i>
                   <p>Penilaian Laporan</p>
                 </a>

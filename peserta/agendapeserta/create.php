@@ -56,7 +56,7 @@
 
                     <div class="card-footer">
                         <button type="submit" name="submit" class="btn btn-success"><i class="fa fa-save mr-2"></i>Simpan</button>
-                        <a href="../agendamhs/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
+                        <a href="../agendapeserta/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
                     </div>
 
                 </form>
@@ -86,18 +86,18 @@
 
 <?php 
     if (isset($_POST['submit'])) {
-    $ppl = $koneksi->query("SELECT * FROM daftarppl WHERE id_mhs = '$data[id_mhs]'")->fetch_array();
+    $ppl = $koneksi->query("SELECT * FROM daftarpkl WHERE id_peserta = '$data[id_peserta]'")->fetch_array();
     $iddf = $ppl['id_daftar'];   
 
         $tgl_agenda            = $_POST['tgl_agenda'];
         $nama_agenda           = $_POST['nama_agenda'];
 
-    $submit = $koneksi->query("INSERT INTO agenda VALUES ('', '$iddf', '$tgl_agenda', '$nama_agenda', 'Belum Terverifikasi')");
+    $submit = $koneksi->query("INSERT INTO agenda VALUES (NULL, '$iddf', '$tgl_agenda', '$nama_agenda', 'Belum Terverifikasi')");
     // var_dump($submit, $koneksi->error); die;
 
     if ($submit) {
         $_SESSION['pesan'] = "Data Berhasil Ditambahkan";
-        echo "<script>window.location.replace('../agendamhs/');</script>";
+        echo "<script>window.location.replace('../agendapeserta/');</script>";
     }
 }
 

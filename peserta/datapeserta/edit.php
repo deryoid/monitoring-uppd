@@ -155,10 +155,10 @@
                                 <div>
                                     <span class="btn btn btn-success btn-file">
                                         <span class="fileupload-new">
-                                            <i class="fa fa-images"> Upload Slip Bayar</i>
+                                            <i class="fa fa-images"> Upload Surat</i>
                                         </span>
                                         <span class="fileupload-exists">
-                                            <i class="fa fa-images"> Ubah Slip Bayar</i>
+                                            <i class="fa fa-images"> Ubah Surat</i>
                                         </span>
                                         <input type="file" name="slip_bayar" >
                                     </span>
