@@ -7,10 +7,10 @@
       include '../../templates/sidebar.php';  
 
     
-$datappl = $koneksi->query("SELECT * FROM daftarppl AS dp 
-LEFT JOIN mahasiswa AS m  ON dp.id_mhs = m.id_mhs
-LEFT JOIN sekolah AS s ON dp.id_sekolah = s.id_sekolah
-LEFT JOIN dosen AS d ON dp.id_dosen = d.id_dosen WHERE dp.id_mhs = '$data[id_mhs]'")->fetch_array();
+$datappl = $koneksi->query("SELECT * FROM daftarpkl AS dp 
+LEFT JOIN peserta AS m  ON dp.id_peserta = m.id_peserta
+LEFT JOIN bagian AS s ON dp.id_bagian = s.id_bagian
+LEFT JOIN pembimbing AS d ON dp.id_pembimbing = d.id_pembimbing  WHERE dp.id_peserta = '$data[id_peserta]'")->fetch_array();
 
     
 ?>
@@ -41,36 +41,36 @@ LEFT JOIN dosen AS d ON dp.id_dosen = d.id_dosen WHERE dp.id_mhs = '$data[id_mhs
                     <div class="card-body">
 
                     <div class="form-group row">
-                        <label class="col-sm-1 col-form-label">Npm</label>
-                        <div class="col-sm-10">
+                        <label class="col-sm-3 col-form-label">NPM/NIM/NIS</label>
+                        <div class="col-sm-9">
                         <input type="text" class="form-control" name="npm" required="" value="<?= $datappl['npm'] ?>" readonly>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-1 col-form-label">Nama</label>
-                        <div class="col-sm-10">
+                        <label class="col-sm-3 col-form-label">Nama</label>
+                        <div class="col-sm-9">
                         <input type="text" class="form-control" name="nama" required="" value="<?= $datappl['nama'] ?>" readonly>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-1 col-form-label">Sekolah</label>
-                        <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nama_sekolah" required="" value="<?= $datappl['nama_sekolah'] ?>" readonly>
+                        <label class="col-sm-3 col-form-label">Bagian</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" name="nama_bagian" required="" value="<?= $datappl['nama_bagian'] ?>" readonly>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-1 col-form-label">Judul</label>
-                        <div class="col-sm-10">
-                        <input type="text" class="form-control" name="judulppl" required="" value="<?= $datappl['judulppl'] ?>">
+                        <label class="col-sm-3 col-form-label">Judul</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" name="judulpkl" required="" value="<?= $datappl['judulpkl'] ?>">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="laporan" class="col-sm-1 col-form-label">Laporan PPL(PDF)</label>
-                        <div class="col-sm-10">
+                        <label for="laporan" class="col-sm-3 col-form-label">Laporan PKL(PDF)/Daftar Agenda PKL</label>
+                        <div class="col-sm-9">
                             <div class="fileupload fileupload-new" data-provides="fileupload">
                                 <div class="fileupload-new thumbnail" style="width: 500px; height: 250px;">
                                     <img src="<?= base_url(); ?>/filelaporan/<?= $datappl['laporan']?>" alt="">
@@ -79,10 +79,10 @@ LEFT JOIN dosen AS d ON dp.id_dosen = d.id_dosen WHERE dp.id_mhs = '$data[id_mhs
                                 <div>
                                     <span class="btn btn btn-success btn-file">
                                         <span class="fileupload-new">
-                                            <i class="fa fa-images"> Upload Laporan PPL(PDF)</i>
+                                            <i class="fa fa-images"> Upload Laporan PKL(PDF)</i>
                                         </span>
                                         <span class="fileupload-exists">
-                                            <i class="fa fa-images"> Ubah Laporan PPL(PDF)</i>
+                                            <i class="fa fa-images"> Ubah Laporan PKL(PDF)</i>
                                         </span>
                                         <input type="file" name="laporan" >
                                     </span>
@@ -99,7 +99,7 @@ LEFT JOIN dosen AS d ON dp.id_dosen = d.id_dosen WHERE dp.id_mhs = '$data[id_mhs
 
                     <div class="card-footer">
                         <button type="submit" name="submit" class="btn btn-success"><i class="fa fa-save mr-2"></i>Simpan</button>
-                        <a href="../nilaimhs/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
+                        <a href="../nilaipeserta/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
                     </div>
 
                 </form>
@@ -117,7 +117,7 @@ LEFT JOIN dosen AS d ON dp.id_dosen = d.id_dosen WHERE dp.id_mhs = '$data[id_mhs
 
 <?php 
     if (isset($_POST['submit'])) {
-        $judulppl            = $_POST['judulppl'];
+        $judulpkl            = $_POST['judulpkl'];
 
     
 //upload file laporan
@@ -186,8 +186,8 @@ $e = "";
 
         if (!empty($e)){
 
-        $submit = $koneksi->query("UPDATE daftarppl SET 
-        judulppl = '$judulppl',
+        $submit = $koneksi->query("UPDATE daftarpkl SET 
+        judulpkl = '$judulpkl',
         laporan = '$nama_laporan',
         status_akhir = 'Belum Selesai'
         WHERE id_daftar = '$datappl[id_daftar]'");
@@ -195,7 +195,7 @@ $e = "";
 
         if ($submit) {
             $_SESSION['pesan'] = "Data Berhasil Di Upload";
-            echo "<script>window.location.replace('../nilaimhs/');</script>";
+            echo "<script>window.location.replace('../nilaipeserta/');</script>";
         }
     }
     }

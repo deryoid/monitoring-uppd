@@ -145,6 +145,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?=base_url('admin/nilaipeserta/')?>" class="nav-link">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                Penilaian PKL
+              </p>
+            </a>
+          </li>
 
           <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
