@@ -110,11 +110,10 @@
 
     if ($submit) {
         if ($role == "Peserta"){
-        $idum =  $koneksi->query("SELECT * FROM user ORDER BY id_user DESC LIMIT 1")->fetch_array();
-        $koneksi->query("INSERT INTO peserta (id_user) VALUES ('$idum[id_user]')");
-
-        $datau = $koneksi->query("SELECT * FROM Peserta WHERE id_user = '$idum[id_user]'")->fetch_array();
-        $koneksi->query("INSERT INTO daftarpkl (id_peserta) VALUES ('$datau[id_peserta]')");
+        $idup =  $koneksi->query("SELECT * FROM user ORDER BY id_user DESC LIMIT 1")->fetch_array();
+        $koneksi->query("INSERT INTO peserta (id_user) VALUES ('$idup[id_user]')");
+        // $datau = $koneksi->query("SELECT * FROM peserta WHERE id_user = '$idup[id_user]'")->fetch_array();
+        // $koneksi->query("INSERT INTO daftarpkl (id_peserta) VALUES ('$datau[id_peserta]')");
     }elseif ($role == "Pembimbing") {
         $idud =  $koneksi->query("SELECT * FROM user ORDER BY id_user DESC LIMIT 1")->fetch_array();
         $koneksi->query("INSERT INTO pembimbing (id_user) VALUES ('$idud[id_user]')");

@@ -38,7 +38,14 @@
         <div class="alert alert-success" role="alert">
           <h5><b>
             <i class="fa fa-info-circle"></i>
-            "Selamat Datang <?php echo $data['nama']; ?>"
+            "Selamat Datang 
+            
+            <?php 
+            echo $data['nama']
+           
+            
+            
+            ?>"
           </b></h5>
         </div>
 
@@ -53,7 +60,7 @@
               <div class="card-header" style="background-color:dodgerblue;">
                 <div class="user-block">
                   <img class="img-circle" src="<?= base_url() ?>/assets/dist/img/logo-kalsel.png" alt="User Image">
-                  <span class="username" ><a href="#" style="color:white;">UPPL UNISKA</a></span>
+                  <span class="username" ><a href="#" style="color:white;">UPPD SAMSAT Kandangan</a></span>
                   <span class="description" style="color:white;">Diposting pada <?php echo tgl_indo($p['tgl_p']);?></span>
                 </div>
                 <!-- /.user-block -->
