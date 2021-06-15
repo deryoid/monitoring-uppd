@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <div class="row">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Formulir Mahasiswa</h1>
+            <h1 class="m-0 text-dark">Formulir Peserta</h1>
         </div>
 
         </div>
@@ -27,14 +27,14 @@
         <div class="col-md-12">
             <div class="card card-dark">
                 <div class="card-header">
-                    <h3 class="card-title">Formulir Mahasiswa</h3>
+                    <h3 class="card-title">Formulir Peserta</h3>
                 </div>
 
             <form class="form-horizontal" method="post" action="" enctype="multipart/form-data" id="saveformulir">
                     <div class="card-body">
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Npm</label>
+                        <label class="col-sm-2 col-form-label">NPM/NIM/NIS</label>
                         <div class="col-sm-4">
                         <input type="text" class="form-control" name="npm" required="" value="<?= $data['npm'] ?>">
                         </div>
@@ -49,21 +49,22 @@
 
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Prodi</label>
+                        <label class="col-sm-2 col-form-label">Prodi/Jurusan</label>
                         <div class="col-sm-4">
-                            <select class="form-control select2" data-placeholder="Pilih Prodi" id="prodi" name="prodi" required="">
-                                    <option value="Pendidikan Olahraga" <?php if ($data['prodi'] == "Pendidikan Olahraga") {
+                            <input type="text" class="form-control" name="prodi" required="" value="<?= $data['prodi'] ?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">JK</label>
+                        <div class="col-sm-4">
+                            <select class="form-control select2" data-placeholder="Pilih JK" id="jk" name="jk" required="">
+                            <option value=""></option>
+                                    <option value="Laki-laki" <?php if ($data['jk'] == "Laki-laki") {
                                                               echo "selected";
-                                                            } ?>>Pendidikan Olahraga</option>
-                                    <option value="Pendidikan Kimia" <?php if ($data['prodi'] == "Pendidikan Kimia") {
+                                                            } ?>>Laki-laki</option>
+                                    <option value="Perempuan" <?php if ($data['jk'] == "Perempuan") {
                                                                 echo "selected";
-                                                              } ?>>Pendidikan Kimia</option>
-                                    <option value="Pendidikan Bahasa Inggris" <?php if ($data['prodi'] == "Pendidikan Bahasa Inggris") {
-                                                                echo "selected";
-                                                              } ?>>Pendidikan Bahasa Inggris</option>
-                                    <option value="Bimbingan dan Konseling" <?php if ($data['prodi'] == "Bimbingan dan Konseling") {
-                                                                echo "selected";
-                                                              } ?>>Bimbingan dan Konseling</option>
+                                                              } ?>>Perempuan</option>
                             </select>
                         </div>
                     </div>
@@ -71,6 +72,7 @@
                         <label class="col-sm-2 col-form-label">Agama</label>
                         <div class="col-sm-4">
                             <select class="form-control select2" data-placeholder="Pilih Agama" id="agama" name="agama" required="">
+                                    <option value=""></option>
                                     <option value="Islam" <?php if ($data['agama'] == "Islam") {
                                                               echo "selected";
                                                             } ?>>Islam</option>
@@ -100,7 +102,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Telp/No. Whatsapp</label>
                         <div class="col-sm-4">
-                        <input type="number" class="form-control" name="telp" pattern="[0-9]+" placeholder="username" autofocus required oninvalid="this.setCustomValidity('Input hanya boleh Angka tanpa spasi!')" value="<?= $data['telp'] ?>">
+                        <input type="number" class="form-control" name="telp" pattern="[0-9]+" placeholder="" autofocus required oninvalid="this.setCustomValidity('Input hanya boleh Angka tanpa spasi!')" value="<?= $data['telp'] ?>">
                         </div>
                     </div>
 
@@ -143,7 +145,7 @@
                     </div>                   
 
                      <div class="form-group row">
-                        <label for="slip_bayar" class="col-sm-2 col-form-label">Slip Bayar</label>
+                        <label for="slip_bayar" class="col-sm-2 col-form-label">Surat Magang dari Kampus/Sekolah</label>
                         <div class="col-sm-10">
                             <div class="fileupload fileupload-new" data-provides="fileupload">
                                 <div class="fileupload-new thumbnail" style="width: 500px; height: 250px;">
@@ -171,7 +173,7 @@
                  </div>
 
                     <div class="card-footer">
-                        <button name="submit" class="btn btn-success" ><i class="fa fa-save mr-2"></i>Daftar PPL</button>
+                        <button name="submit" class="btn btn-success" ><i class="fa fa-save mr-2"></i>Daftar PKL</button>
                         <!-- onclick="return saveformulir();" -->
                         <a href="../datamhs/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
                     </div>
@@ -195,6 +197,7 @@
     if (isset($_POST['submit'])) {
         $npm            = $_POST['npm'];
         $nama           = $_POST['nama'];
+        $jk             = $_POST['jk'];
         $prodi          = $_POST['prodi'];
         $agama          = $_POST['agama'];
         $alamat         = $_POST['alamat'];
@@ -333,16 +336,17 @@
 if (!empty($e) AND !empty($es)) {
     
 
-    $submit = $koneksi->query("UPDATE mahasiswa SET 
+    $submit = $koneksi->query("UPDATE peserta SET 
                             npm = '$npm',
                             nama = '$nama',
+                            jk = '$jk',
                             prodi = '$prodi', 
                             agama = '$agama', 
                             alamat = '$alamat', 
                             telp = '$telp', 
                             foto = '$nama_foto', 
                             slip_bayar = '$nama_slip_bayar' 
-                            WHERE id_mhs = '$data[id_mhs]'");
+                            WHERE id_peserta = '$data[id_peserta]'");
 
 
 
@@ -350,7 +354,7 @@ if (!empty($e) AND !empty($es)) {
         
 
         $_SESSION['pesan'] = "Data Berhasil Diubah";
-        echo "<script>window.location.replace('../datamhs/');</script>";
+        echo "<script>window.location.replace('../datapeserta/');</script>";
     }
 }
 

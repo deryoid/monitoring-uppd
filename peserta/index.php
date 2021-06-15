@@ -35,7 +35,7 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
 
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-warning" role="alert">
           <h5><b>
             <i class="fa fa-info-circle"></i>
             "Selamat Datang 
@@ -57,7 +57,7 @@
           
             <!-- Box Comment -->
             <div class="card card-widget" >
-              <div class="card-header" style="background-color:dodgerblue;">
+              <div class="card-header" style="background-color:green;">
                 <div class="user-block">
                   <img class="img-circle" src="<?= base_url() ?>/assets/dist/img/logo-kalsel.png" alt="User Image">
                   <span class="username" ><a href="#" style="color:white;">UPPD SAMSAT Kandangan</a></span>

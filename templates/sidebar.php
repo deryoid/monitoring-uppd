@@ -181,7 +181,7 @@
           <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="<?=base_url('mahasiswa/index')?>" class="nav-link">
+            <a href="<?=base_url('peserta/index')?>" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -192,7 +192,7 @@
 
 
           <li class="nav-item">
-            <a href="<?=base_url('mahasiswa/datamhs/')?>" class="nav-link">
+            <a href="<?=base_url('peserta/datapeserta/')?>" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Formulir
@@ -202,25 +202,25 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-school"></i>
+              <i class="nav-icon fas fa-building"></i>
               <p>
-                PLP
+                PKL
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-<!--               <a href="<?=base_url('mahasiswa/daftarppl/')?>" class="nav-link">
+<!--               <a href="<?=base_url('peserta/daftarpkl/')?>" class="nav-link">
                   <i class="fas fa-minus nav-icon"></i>
                   <p>Surat Pengantar PPL</p>
                 </a>
               </li> -->
 
               <li class="nav-item">
-              <a href="<?=base_url('mahasiswa/daftarppl/')?>" class="nav-link">
+              <a href="<?=base_url('peserta/daftarpkl/')?>" class="nav-link">
                   <i class="fas fa-minus nav-icon"></i>
-                  <p>Status PPL</p>
+                  <p>Status PKL</p>
                 </a>
               </li>
 
@@ -231,7 +231,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
-                Kegiatan PPL
+                Kegiatan PKL
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -240,7 +240,7 @@
               <li class="nav-item">
               <a href="<?=base_url('mahasiswa/agendamhs/')?>" class="nav-link">
                   <i class="fas fa-minus nav-icon"></i>
-                  <p>Agenda PPL</p>
+                  <p>Agenda PKL</p>
                 </a>
               </li>              
               <li class="nav-item">
@@ -266,7 +266,7 @@
           <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="<?=base_url('dosen/index')?>" class="nav-link">
+            <a href="<?=base_url('pembimbing/index')?>" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -277,10 +277,10 @@
 
 
           <li class="nav-item">
-            <a href="<?=base_url('dosen/datadosen/')?>" class="nav-link">
+            <a href="<?=base_url('pembimbing/datapembimbing/')?>" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
-                Data Diri Dosen
+                Data Diri pembimbing
               </p>
             </a>
           </li>
@@ -296,19 +296,19 @@
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-              <a href="<?=base_url('dosen/bimbingan/')?>" class="nav-link">
+              <a href="<?=base_url('pembimbing/bimbingan/')?>" class="nav-link">
                   <i class="fas fa-minus nav-icon"></i>
                   <p>Daftar Bimbingan</p>
                 </a>
               </li>              
               <li class="nav-item">
-              <a href="<?=base_url('dosen/agendamhs/')?>" class="nav-link">
+              <a href="<?=base_url('pembimbing/agendabimbingan/')?>" class="nav-link">
                   <i class="fas fa-minus nav-icon"></i>
                   <p>Agenda Mahasiswa</p>
                 </a>
               </li>
               <li class="nav-item">
-              <a href="<?=base_url('dosen/nilaimhs/')?>" class="nav-link">
+              <a href="<?=base_url('pembimbing/nilaibimbingan/')?>" class="nav-link">
                   <i class="fas fa-minus nav-icon"></i>
                   <p>Penilaian Mahasiswa</p>
                 </a>

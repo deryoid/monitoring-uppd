@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <div class="row">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Tambah Kepala UPPL</h1>
+            <h1 class="m-0 text-dark">Tambah Kepala UPPD</h1>
         </div>
 
         </div>

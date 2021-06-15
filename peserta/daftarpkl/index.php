@@ -6,10 +6,10 @@
       include '../../templates/navbar.php';
       include '../../templates/sidebar.php';  
 
-$datappl = $koneksi->query("SELECT * FROM daftarppl AS dp 
-                  LEFT JOIN mahasiswa AS m  ON dp.id_mhs = m.id_mhs
-                  LEFT JOIN sekolah AS s ON dp.id_sekolah = s.id_sekolah
-                  LEFT JOIN dosen AS d ON dp.id_dosen = d.id_dosen WHERE dp.id_mhs = '$data[id_mhs]'")->fetch_array();
+$datappl = $koneksi->query("SELECT * FROM daftarpkl AS dp 
+                  LEFT JOIN peserta AS m  ON dp.id_peserta = m.id_peserta
+                  LEFT JOIN bagian AS s ON dp.id_bagian = s.id_bagian
+                  LEFT JOIN pembimbing AS d ON dp.id_pembimbing = d.id_pembimbing WHERE dp.id_peserta = '$data[id_peserta]'")->fetch_array();
 ?>
 
 <div class="content-wrapper">
@@ -17,7 +17,7 @@ $datappl = $koneksi->query("SELECT * FROM daftarppl AS dp
     <div class="container-fluid">
         <div class="row">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Informasi Status PPL</h1>
+            <h1 class="m-0 text-dark">Informasi Status PKL</h1>
         </div>
 
         </div>
@@ -54,26 +54,26 @@ $datappl = $koneksi->query("SELECT * FROM daftarppl AS dp
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">
-                  <i class="fas fa-school"></i>
-                  Status PPL
+                  <i class="fas fa-building"></i>
+                  Status Praktik Kerja Lapangan
                 </h3>
               </div>
               <!-- /.card-header -->
 
               <div class="card-body">
                 <dl class="row">
-                  <dt class="col-sm-4">NPM :</dt>
-                  <dd class="col-sm-8"><?php echo $datappl['npm']; ?></dd>
-                  <dt class="col-sm-4">Nama Mahasiswa :</dt>
-                  <dd class="col-sm-8"><?php echo $datappl['nama']; ?></dd>
-                  <dt class="col-sm-4">Prodi :</dt>
-                  <dd class="col-sm-8"><?php echo $datappl['prodi']; ?></dd>
-                  <dt class="col-sm-4">Sekolah :</dt>
-                  <dd class="col-sm-8"><?php echo $datappl['nama_sekolah'];?></dd>
-                  <dt class="col-sm-4">Dosen Pembimbing :</dt>
-                  <dd class="col-sm-8"><?php echo $datappl['nama_dosen']; ?></dd>
-                  <dt class="col-sm-4">No. Telp/Whatsapp Dosen :</dt>
-                  <dd class="col-sm-8"><?php echo $datappl['hp_dosen']; ?></dd>
+                  <dt class="col-sm-4">NPM/NIM/NIS </dt>
+                  <dd class="col-sm-8"><?php echo ": ".$datappl['npm']; ?></dd>
+                  <dt class="col-sm-4">Nama </dt>
+                  <dd class="col-sm-8"><?php echo ": ".$datappl['nama']; ?></dd>
+                  <dt class="col-sm-4">Prodi/Jurusan </dt>
+                  <dd class="col-sm-8"><?php echo ": ".$datappl['prodi']; ?></dd>
+                  <dt class="col-sm-4">Ditempatkan </dt>
+                  <dd class="col-sm-8"><?php echo ": ".$datappl['nama_bagian'];?></dd>
+                  <dt class="col-sm-4">Pembimbing </dt>
+                  <dd class="col-sm-8"><?php echo ": ".$datappl['nama_pembimbing']; ?></dd>
+                  <dt class="col-sm-4">No. Telp/Whatsapp Dosen </dt>
+                  <dd class="col-sm-8"><?php echo ": ".$datappl['hp_pembimbing']; ?></dd>
                   <dt class="col-sm-4">Status :</dt>
                   <dd class="col-sm-8">
                        <?php if ($datappl['status'] == "Belum Terverifikasi") { ?>

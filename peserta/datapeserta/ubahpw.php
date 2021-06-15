@@ -6,7 +6,7 @@
           include '../../templates/navbar.php';
           include '../../templates/sidebar.php';  
 
-$datau = $koneksi->query("SELECT * FROM user AS u LEFT JOIN mahasiswa AS m ON u.id_user = m.id_user WHERE u.id_user = '$data[id_user]'")->fetch_array();
+$datau = $koneksi->query("SELECT * FROM user AS u LEFT JOIN peserta AS m ON u.id_user = m.id_user WHERE u.id_user = '$data[id_user]'")->fetch_array();
 
 
 
@@ -115,7 +115,7 @@ $datau = $koneksi->query("SELECT * FROM user AS u LEFT JOIN mahasiswa AS m ON u.
 
     if ($submit) {
         $_SESSION['pesan'] = "Data Berhasil Diubah";
-        echo "<script>window.location.replace('../datamhs/');</script>";
+        echo "<script>window.location.replace('../datapeserta/');</script>";
     }
 }
 

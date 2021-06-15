@@ -33,8 +33,8 @@
         <div class="card-header">
             <h3 class="card-title float-right">
                 <a href="ubahpw" class="btn btn-info"><i class="fa fa-key mr-1"></i>Ubah Password</a>
-                <a href="edit" class="btn btn-success"><i class="fa fa-user-edit mr-1"></i>Formulir Daftar PPL</a>
-                <a href="print?id=<?= $data['id_mhs'];?>" class="btn btn-primary" target="blank"><i class="fa fa-print mr-1"></i>Print Formulir</a>
+                <a href="edit" class="btn btn-success"><i class="fa fa-user-edit mr-1"></i>Formulir Daftar PKL</a>
+                <a href="print?id=<?= $data['id_peserta'];?>" class="btn btn-primary" target="blank"><i class="fa fa-print mr-1"></i>Print Formulir</a>
             </h3>
         </div>
 
@@ -47,18 +47,20 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-address-card"></i>
-                  Profil Data Diri Mahasiswa
+                  Profil Data Diri Peserta PKL
                 </h3>
               </div>
               <!-- /.card-header -->
 
               <div class="card-body">
                 <dl class="row">
-                  <dt class="col-sm-4">NPM </dt>
+                  <dt class="col-sm-4">NPM/NIM/NIS</dt>
                   <dd class="col-sm-8"><?php echo ": ".$data['npm']; ?></dd>
-                  <dt class="col-sm-4">Nama Mahasiswa </dt>
+                  <dt class="col-sm-4">Nama </dt>
                   <dd class="col-sm-8"><?php echo ": ".$data['nama']; ?></dd>
-                  <dt class="col-sm-4">Prodi </dt>
+                  <dt class="col-sm-4">Jenis Kelamin</dt>
+                  <dd class="col-sm-8"><?php echo ": ".$data['jk']; ?></dd>
+                  <dt class="col-sm-4">Prodi/Jurusan</dt>
                   <dd class="col-sm-8"><?php echo ": ".$data['prodi']; ?></dd>
                   <dt class="col-sm-4">Agama </dt>
                   <dd class="col-sm-8"><?php echo ": ".$data['agama']; ?></dd>
@@ -88,9 +90,10 @@
               <!-- /.card-header -->
 
               <div class="card-body">
-                
+                  <?php
+                  if($data['foto'] != NULL){ ?>
                   <img style="text-align: center;" width="250px" height="300px" src="<?= base_url() ?>/fotomhs/<?= $data['foto']?>">
-                
+                <?php }?>
               </div>
 
               <!-- /.card-body -->

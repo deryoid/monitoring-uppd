@@ -2,7 +2,7 @@
 require '../../config/config.php';
 include '../../config/koneksi.php';
     $id = $_GET['id'];
-    $datamhs = $koneksi->query("SELECT * FROM mahasiswa WHERE id_mhs = '$id'")->fetch_array();
+    $datamhs = $koneksi->query("SELECT * FROM peserta WHERE id_peserta = '$id'")->fetch_array();
 
 ?>
 <script type="text/javascript">
@@ -27,40 +27,45 @@ window.print();
 </head>
 
 <body>
-<img src="<?=base_url('assets/dist/img/favicon1.png')?>" align="left" width="90" height="90">
+<img src="<?=base_url('assets/dist/img/logo-kalsel.png')?>" align="left" width="90" height="90">
   <p align="center"><b>
-    <font size="5">UNIT PROGRAM PENGENALAN LAPANGAN PERSEKOLAH (UPPLP)</font> <br> 
-    <font size="5">UNIVERSITAS ISLAM KALIMANTAN</font><br><br>
-    <font size="4">MUHAMMAD ARSYAD AL BANJARI</font> <br>
+    <font size="5">Unit Pelayanan Pendapatan Daerah(UPPD)</font> <br> 
+    <font size="5"> Samsat Kandangan</font><br><br>
     <hr size="2px" color="black">
-    <center><font size="2">Alamat : Jl. Adhiyaksa No.2 Kayu tangi, Sungai Miai, Banjarmasin Utara, Kota Banjarmasin, Kalimantan Selatan 70118 (0511) 7359191 </font></center>
+    <center><font size="2">Alamat : Jln. Jend. A.Yani No.14 RT.18 Kandangan. Hulu Sungai Selatan
+ </font></center>
     <hr size="2px" color="black">
   </b></p>
 
     <p style="text-align: center; margin-top: 2%;">
         <label>
-            <b style="font-size: 28;"><u>FORMULIR PPL</u></b> <br>
+            <b style="font-size: 28;"><u>FORMULIR Praktek Kerja Lapangan</u></b> <br>
             <!-- <b style="font-size: 12;">Nomor</b> : <?= $row['nomor_sktu']; ?> -->
             <br>
             <br>
         </label>
         <table border="0" width="60%"  cellpadding=" 1">
-        <p style="text-align: justify; font-size: 15; ">Isikan Data Formulir Pendaftaran PPL Tahun <?php echo date('Y')?> :</p>
+        <p style="text-align: justify; font-size: 15; ">Isikan Data Formulir Pendaftaran PKL Tahun <?php echo date('Y')?> :</p>
         </table>
         <div align="center">
         <table border="0" width="60%" style="text-align: left; font-size: 15; " cellpadding=" 1">
             <tr style="vertical-align: top;">
-                <th width="30%">NPM</th>
+                <th width="30%">NPM/NIM/NIS</th>
                 <td>:</td>
                 <td><b><?= strtoupper($datamhs['npm'])?></b></td>
             </tr>
             <tr style="vertical-align: top;">
-                <th width="30%">Nama Mahasiswa</th>
+                <th width="30%">Nama </th>
                 <td>:</td>
                 <td><b><?= strtoupper($datamhs['nama'])?></b></td>
             </tr>
             <tr style="vertical-align: top;">
-                <th>Prodi</th>
+                <th width="30%">JK </th>
+                <td>:</td>
+                <td><b><?= strtoupper($datamhs['jk'])?></b></td>
+            </tr>
+            <tr style="vertical-align: top;">
+                <th>Prodi/Jurusan</th>
                 <td>:</td>
                 <td><b><?= strtoupper($datamhs['prodi'])?></b></td>
             </tr>
@@ -92,7 +97,7 @@ window.print();
 <br>
 <div style="text-align: center; display: inline-block; float: right;">
   <h5>
-    Banjarmasin , <?php echo tgl_indo(date('Y-m-d')); ?><br>
+    Kandangan , <?php echo tgl_indo(date('Y-m-d')); ?><br>
     
     <br><br><br><br>
     <u><?= $datamhs['nama']?></u> <br>

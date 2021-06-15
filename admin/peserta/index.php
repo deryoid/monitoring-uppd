@@ -78,7 +78,7 @@
                     <td><?= $row['nama_pembimbing'] ?></td>
                     <td><?= $row['nama_bagian'] ?></td>
                     <td>
-                        <?php if($row['tgl_awal']=='0000-00-00' OR $row['tgl_akhir']=='0000-00-00'){
+                        <?php if($row['tgl_awal']== NULL OR $row['tgl_akhir']== NULL){
                             echo " - "; } else { echo tgl_indo($row['tgl_awal'])." S/d ".tgl_indo($row['tgl_akhir']); } 
                         ?>
                     </td>
