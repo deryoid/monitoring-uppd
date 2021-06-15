@@ -7,18 +7,13 @@ session_start();
        	$_SESSION['id_user'];  
      	unset($_SESSION["id_user"]);
 
-     }elseif ($_SESSION['role'] == "Mahasiswa") {
+     }elseif ($_SESSION['role'] == "Peserta") {
      	$_SESSION['id_user'];   
-        $_SESSION['id_mhs'];
+        $_SESSION['id_peserta'];
      	unset($_SESSION["id_user"]);
-     	unset($_SESSION["id_mhs"]);
+     	unset($_SESSION["id_peserta"]);
 
-     }elseif ($_SESSION['role'] == "Dosen") {
-     	$_SESSION['id_user'];  
-        $_SESSION['id_dosen'];
-     	unset($_SESSION["id_user"]);
-		unset($_SESSION["id_dosen"]);
-     } 
+     }
 
 
 

@@ -43,7 +43,11 @@
                  <i class="fa fa-check"> <?= $_SESSION['pesan']; ?></i>
               </div>
         <?php } $_SESSION['pesan'] = ''; ?>
-
+        <?php if (isset($_SESSION['notif']) && $_SESSION['notif'] <> '') { ?>
+            <div class="alert alert-danger success-alert" role="alert">
+                 <i class="fa fa-times"> <?= $_SESSION['notif']; ?></i>
+              </div>
+        <?php } $_SESSION['notif'] = ''; ?>
             <table id="example1" class="table table-bordered table-striped" style="background-color: ">
                 <thead>
                 <tr align="center"></tr>

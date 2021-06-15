@@ -9,10 +9,10 @@
       include '../../templates/sidebar.php';  
 
       $id = $_GET['id'];
-      $data = $koneksi->query("SELECT * FROM daftarppl AS dp 
-                                LEFT JOIN mahasiswa AS m  ON dp.id_mhs = m.id_mhs
-                                LEFT JOIN sekolah AS s ON dp.id_sekolah = s.id_sekolah
-                                LEFT JOIN dosen AS d ON dp.id_dosen = d.id_dosen
+      $data = $koneksi->query("SELECT * FROM daftarpkl AS dp 
+                                LEFT JOIN peserta AS m  ON dp.id_peserta = m.id_peserta
+                                LEFT JOIN bagian AS s ON dp.id_bagian = s.id_bagian
+                                LEFT JOIN pembimbing AS d ON dp.id_pembimbing = d.id_pembimbing
                                 WHERE dp.id_daftar = '$id'");
       $row = $data->fetch_array();
 ?>
@@ -36,62 +36,62 @@
         <div class="col-md-12">
             <div class="card card-dark">
                 <div class="card-header">
-                    <h3 class="card-title">Form Verifikasi Daftar PPL</h3>
+                    <h3 class="card-title">Form Verifikasi Daftar PKL</h3>
                 </div>
 
             <form class="form-horizontal" method="post" action="">
                     <div class="card-body">
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">NPM</label>
+                        <label class="col-sm-2 col-form-label">NPM/NIM/NIS</label>
                         <div class="col-sm-4">
                         <input type="text" class="form-control" name="npm"  value="<?= $row['npm'] ?>" readonly>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nama Mahasiswa</label>
+                        <label class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-4">
                         <input type="text" class="form-control" name="nama"  value="<?= $row['nama'] ?>" readonly>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Prodi</label>
+                        <label class="col-sm-2 col-form-label">Prodi/Jurusan</label>
                         <div class="col-sm-4">
                         <input type="text" class="form-control" name="prodi"  value="<?= $row['prodi'] ?>" readonly>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nama Dosen</label>
+                        <label class="col-sm-2 col-form-label">Nama Pembimbing</label>
                         <div class="col-sm-4">
-                            <select class="form-control select2" data-placeholder="Pilih Dosen" id="id_dosen" name="id_dosen" >
+                            <select class="form-control select2" data-placeholder="Pilih Pembimbing" id="id_pembimbing" name="id_pembimbing" >
                                 <option value=""></option>
                                 <?php
-                                $data1 = $koneksi->query("SELECT * FROM dosen ORDER BY id_dosen ASC");
+                                $data1 = $koneksi->query("SELECT * FROM pembimbing ORDER BY id_pembimbing ASC");
                                 while ($dsn = $data1->fetch_array()) {
                                 ?>
-                                  <option value="<?= $dsn['id_dosen'] ?>" <?php if ($dsn['id_dosen'] == $row['id_dosen']) {
+                                  <option value="<?= $dsn['id_pembimbing'] ?>" <?php if ($dsn['id_pembimbing'] == $row['id_pembimbing']) {
                                                                           echo "selected";
-                                                                        } ?>><?= $dsn['nama_dosen'] ?></option>
+                                                                        } ?>><?= $dsn['nama_pembimbing'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Sekolah</label>
+                        <label class="col-sm-2 col-form-label">Bagian</label>
                         <div class="col-sm-4">
-                            <select class="form-control select2" data-placeholder="Pilih Sekolah" id="id_sekolah" name="id_sekolah" >
+                            <select class="form-control select2" data-placeholder="Pilih Bagian" id="id_bagian" name="id_bagian" >
                                 <option value=""></option>
                                 <?php
-                                $data2 = $koneksi->query("SELECT * FROM sekolah ORDER BY id_sekolah ASC");
+                                $data2 = $koneksi->query("SELECT * FROM bagian ORDER BY id_bagian ASC");
                                 while ($skh = $data2->fetch_array()) {
                                 ?>
-                                  <option value="<?= $skh['id_sekolah'] ?>" <?php if ($skh['id_sekolah'] == $row['id_sekolah']) {
+                                  <option value="<?= $skh['id_bagian'] ?>" <?php if ($skh['id_bagian'] == $row['id_bagian']) {
                                                                           echo "selected";
-                                                                        } ?>><?= $skh['nama_sekolah'] ?></option>
+                                                                        } ?>><?= $skh['nama_bagian'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -112,7 +112,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Bukti Pembayaran</label>
+                        <label class="col-sm-2 col-form-label">Scan Surat Pengantar PKL</label>
                         <div class="col-sm-3">
                         <a href="<?= base_url(); ?>/fotoslipbayar/<?= $row['slip_bayar']?>" data-toggle="lightbox" data-title="Slip Pembayaran" data-gallery="galery" title="Lihat"> <img width="70px" height="57px" src="<?= base_url(); ?>/fotoslipbayar/<?= $row['slip_bayar']?>" readonly></a>
                         </div>
@@ -136,7 +136,7 @@
 
                     <div class="card-footer">
                         <button type="submit" name="submit" class="btn btn-success"><i class="fa fa-save mr-2"></i>Simpan</button>
-                        <a href="../mahasiswa/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
+                        <a href="../peserta/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
                     </div>
 
                 </form>
@@ -178,17 +178,17 @@
 
 <?php 
     if (isset($_POST['submit'])) {
-        $id_sekolah     = $_POST['id_sekolah'];
-        $id_dosen       = $_POST['id_dosen'];
+        $id_bagian     = $_POST['id_bagian'];
+        $id_pembimbing       = $_POST['id_pembimbing'];
         $tgl_awal       = $_POST['tgl_awal'];
         $tgl_akhir      = $_POST['tgl_akhir'];
         $status         = $_POST['status'];
 
-    $submit = $koneksi->query("UPDATE daftarppl SET  id_sekolah = '$id_sekolah', id_dosen = '$id_dosen', tgl_awal = '$tgl_awal', tgl_akhir = '$tgl_akhir',   status = '$status' WHERE id_daftar = '$id'");
+    $submit = $koneksi->query("UPDATE daftarpkl SET  id_bagian = '$id_bagian', id_pembimbing = '$id_pembimbing', tgl_awal = '$tgl_awal', tgl_akhir = '$tgl_akhir',   status = '$status' WHERE id_daftar = '$id'");
 
     if ($submit) {
         $_SESSION['pesan'] = "Data Berhasil Diubah";
-        echo "<script>window.location.replace('../mahasiswa/');</script>";
+        echo "<script>window.location.replace('../peserta/');</script>";
     }
 }
 

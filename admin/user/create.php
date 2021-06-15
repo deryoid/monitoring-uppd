@@ -59,7 +59,6 @@
                                 <option value="">-Pilih-</option>
                                 <option value="Admin">Admin</option>
                                 <option value="Peserta">Peserta</option>
-                                <option value="Pembimbing">Pembimbing</option>
                             </select>
                         </div>
                     </div>

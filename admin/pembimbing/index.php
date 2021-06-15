@@ -16,7 +16,7 @@
     <div class="container-fluid">
         <div class="row">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Data Dosen</h1>
+            <h1 class="m-0 text-dark">Data Pembimbing</h1>
         </div>
 
         </div>
@@ -32,7 +32,7 @@
         <div class="card-header">
             <h3 class="card-title">
             <a href="print" class="btn btn-info" target="blank"><i class="fa fa-print mr-1"></i>Print</a>
-                <!-- <a href="create" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i>Tambah Data Dosen</a> -->
+                <a href="create" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i>Tambah Data Pembimbing</a>
             </h3>
         </div>
 
@@ -49,10 +49,10 @@
                 <thead>
                 <tr align="center"></tr>
                     <!-- <th>No</th> -->
-                    <th>NIDN/NIK</th>
-                    <th>Nama Dosen</th>
-                    <th>Prodi Mengajar</th>
-                    <th>No. User</th>
+                    <th>NIK/NIP</th>
+                    <th>Nama Pembimbing</th>
+                    <th>No. Hp</th>
+                    <th>Alamat</th>
                     <th>Pilihan</th>
                 </tr>
                 </thead>
@@ -60,18 +60,19 @@
                 <tbody>
                     <?php 
                         $no = 1;
-                        $data = $koneksi->query("SELECT * FROM dosen AS d LEFT JOIN user AS u ON d.id_user = u.id_user ORDER BY d.id_dosen ASC");
+                        $data = $koneksi->query("SELECT * FROM pembimbing ORDER BY id_pembimbing ASC");
                         while ($row = $data->fetch_array()) {
                      ?>
                     <tr>
                     <!-- <td align="center"><?= $no++; ?></td> -->
-                    <td><?= $row['nidn'] ?></td>
-                    <td><?= $row['nama_dosen'] ?></td>
-                    <td><?= $row['prodi_dosen'] ?></td>
-                    <td align="center"><span class="badge badge-success"><?= $row['id_user'] ?></span> / <span class="badge badge-info"><?= $row['username'] ?></span></td>
+                    <td><?= $row['nik'] ?></td>
+                    <td><?= $row['nama_pembimbing'] ?></td>
+                    <td><?= $row['hp_pembimbing'] ?></td>
+                    <td><?= $row['alamat_pembimbing'] ?></td>
+                    
                         <td align="center">
-                            <a href="edit?id=<?= $row['id_dosen'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
-                            <a href="delete?id=<?= $row['id_dosen'] ?>" class="btn btn-danger btn-sm alert-hapus" title="Hapus"><i class="fa fa-trash"></i></a>
+                            <a href="edit?id=<?= $row['id_pembimbing'] ?>" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="delete?id=<?= $row['id_pembimbing'] ?>" class="btn btn-danger btn-sm alert-hapus" title="Hapus"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     <?php } ?>

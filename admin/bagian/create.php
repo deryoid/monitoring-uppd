@@ -17,7 +17,7 @@
     <div class="container-fluid">
         <div class="row">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Tambah Data Sekolah</h1>
+            <h1 class="m-0 text-dark">Tambah Data Bagian</h1>
         </div>
 
         </div>
@@ -31,36 +31,24 @@
         <div class="col-md-12">
             <div class="card card-dark">
                 <div class="card-header">
-                    <h3 class="card-title">Form Tambah Data Sekolah</h3>
+                    <h3 class="card-title">Form Tambah Data Bagian</h3>
                 </div>
 
             <form class="form-horizontal" method="post" action="">
                     <div class="card-body">
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nama Sekolah</label>
+                        <label class="col-sm-2 col-form-label">Nama Bagian</label>
                         <div class="col-sm-4">
-                        <input type="text" class="form-control" name="nama_sekolah" required="">
+                        <input type="text" class="form-control" name="nama_bagian" required="">
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nama Kepala Sekolah</label>
-                        <div class="col-sm-4">
-                        <input type="text" class="form-control" name="nama_kepsek" required="">
-                        </div>
-                    </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Alamat Sekolah</label>
+                        <label class="col-sm-2 col-form-label">Deskripsi</label>
                         <div class="col-sm-6">
-                        <textarea type="text" class="form-control" name="alamat" required=""></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nomor Telp Sekolah</label>
-                        <div class="col-sm-4">
-                        <input type="text" class="form-control" name="no_telp" required="">
+                        <textarea type="text" class="form-control" name="deskrip" required=""></textarea>
                         </div>
                     </div>
 
@@ -68,7 +56,7 @@
 
                     <div class="card-footer">
                         <button type="submit" name="submit" class="btn btn-success"><i class="fa fa-save mr-2"></i>Simpan</button>
-                        <a href="../sekolah/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
+                        <a href="../bagian/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
                     </div>
 
                 </form>
@@ -98,16 +86,14 @@
 
 <?php 
     if (isset($_POST['submit'])) {
-        $nama_sekolah    = $_POST['nama_sekolah'];
-        $alamat          = $_POST['alamat'];
-        $no_telp         = $_POST['no_telp'];
-        $nama_kepsek     = $_POST['nama_kepsek'];
+        $nama_bagian    = $_POST['nama_bagian'];
+        $deskrip          = $_POST['deskrip'];
 
-    $submit = $koneksi->query("INSERT INTO sekolah VALUES ('', '$nama_sekolah', '$alamat', '$no_telp', '$nama_kepsek')");
+    $submit = $koneksi->query("INSERT INTO bagian VALUES (NULL, '$nama_bagian', '$deskrip')");
 
     if ($submit) {
         $_SESSION['pesan'] = "Data Berhasil Ditambahkan";
-        echo "<script>window.location.replace('../sekolah/');</script>";
+        echo "<script>window.location.replace('../bagian/');</script>";
     }
 }
 

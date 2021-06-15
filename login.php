@@ -113,17 +113,16 @@ if (isset($_POST['login'])) {
   $pass = mysqli_real_escape_string($koneksi, $_POST['password']);
   $pass = md5($pass);
 
-  $query = mysqli_query($koneksi, "SELECT * FROM user AS u LEFT JOIN peserta AS m ON u.id_user = m.id_user LEFT JOIN pembimbing AS d ON u.id_user = d.id_user
-                     WHERE u.username = '$user' AND u.password = '$pass'");
+  $query = mysqli_query($koneksi, "SELECT * FROM user AS u LEFT JOIN peserta AS p ON u.id_user = p.id_user WHERE u.username = '$user' AND u.password = '$pass'");
   $row = mysqli_fetch_array($query);
+
+  if($row){
 
   $username  = $row['username'];
   $password  = $row['password'];
   $role      = $row['role'];
   $id_user   = $row['id_user'];
   $id_peserta = $row['id_peserta'];
-  $id_pembimbing  = $row['id_pembimbing'];
-  
 
   if ($user == $username && $pass == $password) {
     if ($role == "Peserta") {
@@ -132,12 +131,7 @@ if (isset($_POST['login'])) {
         $_SESSION['role'] = $role;
     echo "<script>window.location.replace('peserta/');</script>";
 
-    }elseif ($role == "Pembimbing") {
-        $_SESSION['id_pembimbing']  = $id_pembimbing;
-        $_SESSION['id_user']   = $id_user;
-        $_SESSION['role'] = $role;
-        echo "<script>window.location.replace('pembimbing/');</script>";
-  }elseif ($role == "Admin") {
+    }elseif ($role == "Admin") {
         $_SESSION['id_user']   = $id_user;
         $_SESSION['role'] = $role;
         echo "<script>window.location.replace('admin/');</script>";
@@ -146,6 +140,10 @@ if (isset($_POST['login'])) {
     $_SESSION['pesan'] = 'Username atau Password Tidak Ditemukan';
     echo "<script>window.location.replace('login');</script>";
   }
+}else{
+  $_SESSION['pesan'] = 'Username atau Password Tidak Ditemukan';
+    echo "<script>window.location.replace('login');</script>";
+}
 }
 
 ?>

@@ -23,9 +23,6 @@
                   }elseif ($_SESSION['role'] == "Peserta") {
                     $data = $koneksi->query("SELECT * FROM peserta WHERE id_peserta = '$_SESSION[id_peserta]'")->fetch_array();
                     echo $data['nama'];
-                  }elseif ($_SESSION['role'] == "Pembimbing") {
-                    $data2 = $koneksi->query("SELECT * FROM pembimbing WHERE id_pembimbing = '$_SESSION[id_pembimbing]'")->fetch_array();
-                    echo $data2['nama_pembimbing'];
                   }  
               ?>
           </i>
@@ -258,71 +255,8 @@
       </nav>
       <!-- /.sidebar-menu -->
 
-    <?php }elseif ($_SESSION['role'] == "Pembimbing") { ?>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-              with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="<?=base_url('pembimbing/index')?>" class="nav-link">
-              <i class="nav-icon fas fa-home"></i>
-              <p>
-                Home
-              </p>
-            </a>
-          </li>
-
-
-
-          <li class="nav-item">
-            <a href="<?=base_url('pembimbing/datapembimbing/')?>" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Data Diri pembimbing
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Bimbingan
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-
-              <li class="nav-item">
-              <a href="<?=base_url('pembimbing/bimbingan/')?>" class="nav-link">
-                  <i class="fas fa-minus nav-icon"></i>
-                  <p>Daftar Bimbingan</p>
-                </a>
-              </li>              
-              <li class="nav-item">
-              <a href="<?=base_url('pembimbing/agendabimbingan/')?>" class="nav-link">
-                  <i class="fas fa-minus nav-icon"></i>
-                  <p>Agenda Mahasiswa</p>
-                </a>
-              </li>
-              <li class="nav-item">
-              <a href="<?=base_url('pembimbing/nilaibimbingan/')?>" class="nav-link">
-                  <i class="fas fa-minus nav-icon"></i>
-                  <p>Penilaian Mahasiswa</p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-
-
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-
     <?php } ?>
+
     </div>
     <!-- /.sidebar -->
   </aside>

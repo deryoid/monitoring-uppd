@@ -67,9 +67,6 @@
                                     <option value="Peserta" <?php if ($row['role'] == "Peserta") {
                                                                 echo "selected";
                                                               } ?>>Peserta</option>
-                                    <option value="Pembimbing" <?php if ($row['role'] == "Pembimbing") {
-                                                                echo "selected";
-                                                              } ?>>Pembimbing</option>
                             </select>
                         </div>
                     </div>

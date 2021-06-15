@@ -9,7 +9,7 @@
       include '../../templates/sidebar.php';  
 
       $id = $_GET['id'];
-      $data = $koneksi->query("SELECT * FROM sekolah WHERE id_sekolah = '$id'");
+      $data = $koneksi->query("SELECT * FROM bagian WHERE id_bagian = '$id'");
       $row = $data->fetch_array();
 ?>
 
@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Edit Data Sekolah</h1>
+            <h1 class="m-0 text-dark">Edit Data Bagian</h1>
         </div>
 
         </div>
@@ -32,43 +32,31 @@
         <div class="col-md-12">
             <div class="card card-dark">
                 <div class="card-header">
-                    <h3 class="card-title">Form Edit Data Sekolah</h3>
+                    <h3 class="card-title">Form Edit Data Bagian</h3>
                 </div>
 
             <form class="form-horizontal" method="post" action="">
                     <div class="card-body">
-
-
-
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nama Sekolah</label>
+                        <label class="col-sm-2 col-form-label">Nama Bagian</label>
                         <div class="col-sm-4">
-                        <input type="text" class="form-control" name="nama_sekolah" value="<?= $row['nama_sekolah'] ?>">
+                        <input type="text" class="form-control" name="nama_bagian" required="" value="<?= $row['nama_bagian'] ?>">
                         </div>
                     </div>
+
+
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nama Kepala Sekolah</label>
-                        <div class="col-sm-4">
-                        <input type="text" class="form-control" name="nama_kepsek" value="<?= $row['nama_kepsek'] ?>">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Alamat Sekolah</label>
+                        <label class="col-sm-2 col-form-label">Deskripsi</label>
                         <div class="col-sm-6">
-                        <textarea type="text" class="form-control" name="alamat" ><?php echo $row['alamat']; ?></textarea>
+                        <textarea type="text" class="form-control" name="deskrip" required=""><?= $row['deskrip'] ?></textarea>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nomor Telp Sekolah</label>
-                        <div class="col-sm-4">
-                        <input type="text" class="form-control" name="no_telp" value="<?= $row['no_telp'] ?>">
-                        </div>
-                    </div>
+
                     </div>
 
                     <div class="card-footer">
                         <button type="submit" name="submit" class="btn btn-success"><i class="fa fa-save mr-2"></i>Simpan</button>
-                        <a href="../sekolah/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
+                        <a href="../bagian/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
                     </div>
 
                 </form>
@@ -97,18 +85,16 @@
 
 <?php 
     if (isset($_POST['submit'])) {
-        $nama_sekolah    = $_POST['nama_sekolah'];
-        $alamat          = $_POST['alamat'];
-        $no_telp         = $_POST['no_telp'];
-        $nama_kepsek         = $_POST['nama_kepsek'];
+        $nama_bagian    = $_POST['nama_bagian'];
+        $deskrip           = $_POST['deskrip'];
 
 
-    $submit = $koneksi->query("UPDATE sekolah SET nama_sekolah = '$nama_sekolah', alamat = '$alamat', no_telp = '$no_telp', nama_kepsek = '$nama_kepsek' WHERE id_sekolah = '$id'");
-    session_start();
-
+    $submit = $koneksi->query("UPDATE bagian SET nama_bagian = '$nama_bagian', deskrip = '$deskrip' WHERE id_bagian = '$id'");
+    // var_dump($submit, $koneksi->error); die;
+    
     if ($submit) {
         $_SESSION['pesan'] = "Data Berhasil Diubah";
-        echo "<script>window.location.replace('../sekolah/');</script>";
+        echo "<script>window.location.replace('../bagian/');</script>";
     }
 }
 

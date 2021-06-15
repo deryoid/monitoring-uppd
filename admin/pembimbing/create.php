@@ -38,35 +38,35 @@
                     <div class="card-body">
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">NIDN/NIK</label>
+                        <label class="col-sm-2 col-form-label">NIP/NIK</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nidn" required="">
+                        <input type="text" class="form-control" name="nik" required="">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nama Dosen</label>
+                        <label class="col-sm-2 col-form-label">Nama Pembimbing</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nama_dosen" required="">
+                        <input type="text" class="form-control" name="nama_pembimbing" required="">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Prodi</label>
+                        <label class="col-sm-2 col-form-label">Hp Pembimbing</label>
                         <div class="col-sm-10">
-                            <select class="form-control select2" data-placeholder="Pilih Role" id="role" name="role" required="">
-                                <option value="Pendidikan Olahraga">Pendidikan Olahraga</option>
-                                <option value="Pendidikan Kimia">Pendidikan Kimia</option>
-                                <option value="Pendidikan Bahasa Inggris">Pendidikan Bahasa Inggris</option>
-                                <option value="Bimbingan dan Konseling">Bimbingan dan Konseling</option>
-                            </select>
+                        <input type="text" class="form-control" name="hp_pembimbing" required="">
                         </div>
                     </div>
-
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Alamat</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" name="alamat_pembimbing" required="">
+                        </div>
+                    </div>
 
                     </div>
 
                     <div class="card-footer">
                         <button type="submit" name="submit" class="btn btn-success"><i class="fa fa-save mr-2"></i>Simpan</button>
-                        <a href="../dosen/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
+                        <a href="../pembimbing/" class="btn btn-default"><i class="fa fa-arrow-circle-left mr-2"></i>Batal</a>
                     </div>
 
                 </form>
@@ -96,15 +96,16 @@
 
 <?php 
     if (isset($_POST['submit'])) {
-        $nidn            = $_POST['nidn'];
-        $nama_dosen      = $_POST['nama_dosen'];
-        $prodi_dosen     = $_POST['prodi_dosen'];
+        $nik            = $_POST['nik'];
+        $nama_pembimbing      = $_POST['nama_pembimbing'];
+        $hp_pembimbing     = $_POST['hp_pembimbing'];
+        $alamat_pembimbing     = $_POST['alamat_pembimbing'];
 
-    $submit = $koneksi->query("INSERT INTO dosen VALUES ('', '$nidn', '$nama_dosen', '$prodi_dosen')");
+    $submit = $koneksi->query("INSERT INTO pembimbing VALUES (NULL, '$nik', '$nama_pembimbing', '$hp_pembimbing', '$alamat_pembimbing')");
 
     if ($submit) {
         $_SESSION['pesan'] = "Data Berhasil Ditambahkan";
-        echo "<script>window.location.replace('../dosen/');</script>";
+        echo "<script>window.location.replace('../pembimbing/');</script>";
     }
 }
 

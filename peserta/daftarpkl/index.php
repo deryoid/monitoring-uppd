@@ -48,12 +48,7 @@ $datappl = $koneksi->query("SELECT * FROM daftarpkl AS dp
               </div>
         <?php } $_SESSION['pesan'] = ''; ?>
 
-        <div class="card-body">
-          <!-- ./col -->
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
+                <h3>
                   <i class="fas fa-building"></i>
                   Status Praktik Kerja Lapangan
                 </h3>
@@ -61,6 +56,7 @@ $datappl = $koneksi->query("SELECT * FROM daftarpkl AS dp
               <!-- /.card-header -->
 
               <div class="card-body">
+              <div class="col-md-12">
                 <dl class="row">
                   <dt class="col-sm-4">NPM/NIM/NIS </dt>
                   <dd class="col-sm-8"><?php echo ": ".$datappl['npm']; ?></dd>
@@ -76,7 +72,7 @@ $datappl = $koneksi->query("SELECT * FROM daftarpkl AS dp
                   <dd class="col-sm-8"><?php echo ": ".$datappl['hp_pembimbing']; ?></dd>
                   <dt class="col-sm-4">Status :</dt>
                   <dd class="col-sm-8">
-                       <?php if ($datappl['status'] == "Belum Terverifikasi") { ?>
+                       : <?php if ($datappl['status'] == "Belum Terverifikasi") { ?>
                         <span class="badge badge-danger"><?= $datappl['status'] ?></span>
                         <?php } else { ?>
                         <span class="badge badge-success"><?= $datappl['status'] ?></span>
@@ -84,13 +80,7 @@ $datappl = $koneksi->query("SELECT * FROM daftarpkl AS dp
                   </dd>
                 </dl>
               </div>
-
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- ./col -->
-        </div>    
+              </div>   
         </div>
     </div>
 
