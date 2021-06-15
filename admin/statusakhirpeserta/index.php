@@ -16,7 +16,7 @@
     <div class="container-fluid">
         <div class="row">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Data Status Akhir PPL</h1>
+            <h1 class="m-0 text-dark">Data Status Akhir PKL</h1>
         </div>
 
         </div>
@@ -48,11 +48,11 @@
                 <thead>
                 <tr align="center"></tr>
                     <!-- <th>No</th> -->
-                    <th>NPM</th>
+                    <th>NPM/NIM/NIS</th>
                     <th>Nama</th>
-                    <th>Prodi</th>
-                    <th>Dosen Pembimbing</th>
-                    <th>Sekolah</th>
+                    <th>Prodi/Jurusan</th>
+                    <th>Pembimbing</th>
+                    <th>Bagian</th>
                     <th>No.Telp</th>
                     <th>Status Akhir</th>
                 </tr>
@@ -61,10 +61,10 @@
                 <tbody>
                     <?php 
                         $no = 1;
-                        $data = $koneksi->query("SELECT * FROM daftarppl AS dp 
-                                                    LEFT JOIN mahasiswa AS m  ON dp.id_mhs = m.id_mhs
-                                                    LEFT JOIN sekolah AS s ON dp.id_sekolah = s.id_sekolah
-                                                    LEFT JOIN dosen AS d ON dp.id_dosen = d.id_dosen
+                        $data = $koneksi->query("SELECT * FROM daftarpkl AS dp 
+                        LEFT JOIN peserta AS p  ON dp.id_peserta = p.id_peserta
+                        LEFT JOIN bagian AS bg ON dp.id_bagian = bg.id_bagian
+                        LEFT JOIN pembimbing AS pm ON dp.id_pembimbing = pm.id_pembimbing
                                                   ORDER BY dp.id_daftar DESC");
                         while ($row = $data->fetch_array()) {
                      ?>
@@ -73,8 +73,8 @@
                     <td><?= $row['npm'] ?></td>
                     <td><?= $row['nama'] ?></td>
                     <td><?= $row['prodi'] ?></td>
-                    <td><?= $row['nama_dosen'] ?></td>
-                    <td><?= $row['nama_sekolah'] ?></td>
+                    <td><?= $row['nama_pembimbing'] ?></td>
+                    <td><?= $row['nama_bagian'] ?></td>
                     <td><?= $row['telp']?></td>
 
                     <td>

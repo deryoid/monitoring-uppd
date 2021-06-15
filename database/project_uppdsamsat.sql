@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 15, 2021 at 04:55 AM
+-- Generation Time: Jun 15, 2021 at 06:05 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.12
 
@@ -35,6 +35,13 @@ CREATE TABLE `agenda` (
   `ket_agenda` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `agenda`
+--
+
+INSERT INTO `agenda` (`id_agenda`, `id_daftar`, `tgl_agenda`, `nama_agenda`, `ket_agenda`) VALUES
+(1, 1, '2021-06-16', 'Pengarahan dari pembimbing ', 'Terverifikasi');
+
 -- --------------------------------------------------------
 
 --
@@ -44,8 +51,16 @@ CREATE TABLE `agenda` (
 CREATE TABLE `bagian` (
   `id_bagian` int(11) NOT NULL,
   `nama_bagian` varchar(100) NOT NULL,
-  `desc` text NOT NULL
+  `deskrip` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bagian`
+--
+
+INSERT INTO `bagian` (`id_bagian`, `nama_bagian`, `deskrip`) VALUES
+(1, 'Administrasi', '-\r\n'),
+(2, 'Tata Usaha', '-');
 
 -- --------------------------------------------------------
 
@@ -67,6 +82,13 @@ CREATE TABLE `daftarpkl` (
   `status_akhir` varchar(40) DEFAULT 'Belum Selesai'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `daftarpkl`
+--
+
+INSERT INTO `daftarpkl` (`id_daftar`, `id_peserta`, `id_bagian`, `id_pembimbing`, `status`, `tgl_awal`, `tgl_akhir`, `judulpkl`, `laporan`, `nilaipkl`, `status_akhir`) VALUES
+(1, 1, 2, 2, 'Terverifikasi', '2021-06-16', '2021-07-16', 'Laporan PKL', '2812.pdf', '89', 'Selesai');
+
 -- --------------------------------------------------------
 
 --
@@ -75,18 +97,19 @@ CREATE TABLE `daftarpkl` (
 
 CREATE TABLE `pembimbing` (
   `id_pembimbing` int(11) NOT NULL,
-  `nidn` varchar(25) NOT NULL,
+  `nik` varchar(25) NOT NULL,
   `nama_pembimbing` varchar(50) NOT NULL,
-  `agama` varchar(20) NOT NULL,
-  `tmp_lahir` varchar(20) NOT NULL,
-  `tgl_lahir` date NOT NULL,
-  `bagian` varchar(40) NOT NULL,
   `hp_pembimbing` varchar(20) NOT NULL,
-  `alamat_pembimbing` text NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `foto` varchar(255) DEFAULT NULL,
-  `id_user` int(11) NOT NULL
+  `alamat_pembimbing` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pembimbing`
+--
+
+INSERT INTO `pembimbing` (`id_pembimbing`, `nik`, `nama_pembimbing`, `hp_pembimbing`, `alamat_pembimbing`) VALUES
+(1, '67231 88 121', 'Ruslan', '082192938888', 'Sungai Raya'),
+(2, '67231 72 3111', 'Hj. Rusmini', '082147771823', 'Zafri Zam Zam');
 
 -- --------------------------------------------------------
 
@@ -106,7 +129,7 @@ CREATE TABLE `pengumuman` (
 --
 
 INSERT INTO `pengumuman` (`id_p`, `judul`, `isi`, `tgl_p`) VALUES
-(1, 'Selamat Datang di Aplikasi Monitoring UPPD Samsat Kandangan', '<p>hallo...!</p>', '2021-06-15');
+(1, 'Welcome ..!', '<p>Selamat Datang Diaplikasi Praktik Kerja Lapangan UPPD Samsat Kandangan.</p>', '2021-06-16');
 
 -- --------------------------------------------------------
 
@@ -118,15 +141,22 @@ CREATE TABLE `peserta` (
   `id_peserta` int(11) NOT NULL,
   `npm` varchar(13) DEFAULT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `jk` varchar(25) NOT NULL,
+  `jk` varchar(25) DEFAULT NULL,
   `prodi` varchar(40) DEFAULT NULL,
-  `agama` varchar(20) NOT NULL,
-  `alamat` text NOT NULL,
-  `telp` varchar(18) NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  `surat_magang` varchar(255) NOT NULL,
+  `agama` varchar(20) DEFAULT NULL,
+  `alamat` text,
+  `telp` varchar(18) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL,
+  `slip_bayar` varchar(255) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `peserta`
+--
+
+INSERT INTO `peserta` (`id_peserta`, `npm`, `nama`, `jk`, `prodi`, `agama`, `alamat`, `telp`, `foto`, `slip_bayar`, `id_user`) VALUES
+(1, '52316666', 'Syamsuri', 'Laki-laki', 'RPL', 'Islam', 'Kandangan', '08977231221', '27212.png', '15316.png', 2);
 
 -- --------------------------------------------------------
 
@@ -160,7 +190,7 @@ CREATE TABLE `ttd_uppd` (
 --
 
 INSERT INTO `ttd_uppd` (`idTtd`, `nip`, `kepalaUppd`, `jabatan`) VALUES
-(1, '65327717222', 'H. Jumbrean, S.H', 'Kepala UPPD Samsat');
+(1, '160 08823 9 92', 'H. Jumbrean, S.H', 'Kepala UPPD Samsat Kandangan');
 
 -- --------------------------------------------------------
 
@@ -180,8 +210,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `role`) VALUES
-(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin'),
-(14, 'peserta1', '1ee0cc35596be8e4219c7241ece2195e', 'Peserta');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin'),
+(2, 'peserta1', '289dff07669d7a23de0ef88d2f7129e7', 'Peserta');
 
 -- --------------------------------------------------------
 
@@ -200,8 +230,7 @@ CREATE TABLE `user_role` (
 
 INSERT INTO `user_role` (`id_role`, `role`) VALUES
 (1, 'Admin'),
-(2, 'Peserta'),
-(3, 'Pembimbing');
+(2, 'Peserta');
 
 --
 -- Indexes for dumped tables
@@ -233,8 +262,7 @@ ALTER TABLE `daftarpkl`
 -- Indexes for table `pembimbing`
 --
 ALTER TABLE `pembimbing`
-  ADD PRIMARY KEY (`id_pembimbing`),
-  ADD KEY `id_user` (`id_user`);
+  ADD PRIMARY KEY (`id_pembimbing`);
 
 --
 -- Indexes for table `pengumuman`
@@ -281,25 +309,25 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `bagian`
 --
 ALTER TABLE `bagian`
-  MODIFY `id_bagian` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bagian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `daftarpkl`
 --
 ALTER TABLE `daftarpkl`
-  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pembimbing`
 --
 ALTER TABLE `pembimbing`
-  MODIFY `id_pembimbing` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pembimbing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pengumuman`
@@ -311,7 +339,7 @@ ALTER TABLE `pengumuman`
 -- AUTO_INCREMENT for table `peserta`
 --
 ALTER TABLE `peserta`
-  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `surat_masuk`
@@ -329,13 +357,13 @@ ALTER TABLE `ttd_uppd`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

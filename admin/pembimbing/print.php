@@ -4,7 +4,7 @@
 
     $no = 1;
 
-      $data = $koneksi->query("SELECT * FROM dosen AS d LEFT JOIN user AS u ON d.id_user = u.id_user ORDER BY d.id_dosen ASC");
+      $data = $koneksi->query("SELECT * FROM pembimbing ORDER BY id_pembimbing ASC");
     //   $jumlah = mysqli_num_rows($data);
 
 $bln = array(
@@ -31,21 +31,21 @@ window.print();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LAPORAN DATA DOSEN</title>
+    <title>LAPORAN DATA PEMBIMBING</title>
 </head>
 <body>
-<img src="<?=base_url('assets/dist/img/favicon1.png')?>" align="left" width="90" height="90">
+<img src="<?=base_url('assets/dist/img/logo-kalsel.png')?>" align="left" width="90" height="90">
   <p align="center"><b>
-    <font size="5">UNIT PROGRAM PENGENALAN LAPANGAN PERSEKOLAH (UPPLP)</font> <br> 
-    <font size="5">UNIVERSITAS ISLAM KALIMANTAN</font><br><br>
-    <font size="4">MUHAMMAD ARSYAD AL BANJARI</font> <br>
+    <font size="5">Unit Pelayanan Pendapatan Daerah(UPPD)</font> <br> 
+    <font size="5"> Samsat Kandangan</font><br><br>
     <hr size="2px" color="black">
-    <center><font size="2">Alamat : Jl. Adhiyaksa No.2 Kayu tangi, Sungai Miai, Banjarmasin Utara, Kota Banjarmasin, Kalimantan Selatan 70118 (0511) 7359191 </font></center>
+    <center><font size="2">Alamat : Jln. Jend. A.Yani No.14 RT.18 Kandangan. Hulu Sungai Selatan
+ </font></center>
     <hr size="2px" color="black">
   </b></p>
     
     <h3><center><br>
-        LAPORAN DATA DOSEN<br> 
+        LAPORAN DATA PEMBIMBING<br> 
     </center></h3><br><br>
                     <div class="row">
                     <div class="col-sm-12">
@@ -54,9 +54,8 @@ window.print();
                                 <thead>
                                 <tr>
                                 <th>No</th>
-                                <th>NIDN/NIK</th>
-                                <th>Nama Dosen</th>
-                                <th>Prodi Mengajar</th>
+                                <th>NIP/NIK</th>
+                                <th>Nama Pembimbing</th>
                                 </tr>
                                 </thead>
 
@@ -64,9 +63,8 @@ window.print();
                                 <?php while ($row = mysqli_fetch_array($data)) { ?>
                                 <tr>
                                 <td><?= $no++ ?></td>
-                                <td><?= $row['nidn'] ?></td>
-                                <td><?= $row['nama_dosen'] ?></td>
-                                <td><?= $row['prodi_dosen'] ?></td>
+                                <td><?= $row['nik'] ?></td>
+                                <td><?= $row['nama_pembimbing'] ?></td>
                                 </tr>
                                 <?php } ?>
                                 </tbody>
@@ -82,7 +80,7 @@ window.print();
 
 <br>
 <?php 
-  $datattd = $koneksi->query("SELECT * FROM ttd_uppl")->fetch_array();
+  $datattd = $koneksi->query("SELECT * FROM ttd_uppd")->fetch_array();
 
 ?>
 <div style="text-align: center; display: inline-block; float: right;">
@@ -90,7 +88,7 @@ window.print();
     Banjarmasin , <?php echo tgl_indo(date('Y-m-d')); ?><br>
     <?php echo $datattd['jabatan']?>
     <br><br><br><br><br><br>
-    <?php echo $datattd['kepalaUppl']?><br>
+    <?php echo $datattd['kepalaUppd']?><br>
     NIP. <?php echo $datattd['nip']?>
   </h5>
 

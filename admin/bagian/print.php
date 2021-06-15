@@ -4,7 +4,7 @@
 
     $no = 1;
 
-      $data = $koneksi->query("SELECT * FROM sekolah ORDER BY id_sekolah ASC");
+      $data = $koneksi->query("SELECT * FROM bagian ORDER BY id_bagian ASC");
       $jumlah = mysqli_num_rows($data);
 
 $bln = array(
@@ -34,18 +34,18 @@ window.print();
     <title>LAPORAN DATA SEKOLAH</title>
 </head>
 <body>
-<img src="<?=base_url('assets/dist/img/favicon1.png')?>" align="left" width="90" height="90">
+<img src="<?=base_url('assets/dist/img/logo-kalsel.png')?>" align="left" width="90" height="90">
   <p align="center"><b>
-    <font size="5">UNIT PROGRAM PENGENALAN LAPANGAN PERSEKOLAH (UPPLP)</font> <br> 
-    <font size="5">UNIVERSITAS ISLAM KALIMANTAN</font><br><br>
-    <font size="4">MUHAMMAD ARSYAD AL BANJARI</font> <br>
+    <font size="5">Unit Pelayanan Pendapatan Daerah(UPPD)</font> <br> 
+    <font size="5"> Samsat Kandangan</font><br><br>
     <hr size="2px" color="black">
-    <center><font size="2">Alamat : Jl. Adhiyaksa No.2 Kayu tangi, Sungai Miai, Banjarmasin Utara, Kota Banjarmasin, Kalimantan Selatan 70118 (0511) 7359191 </font></center>
+    <center><font size="2">Alamat : Jln. Jend. A.Yani No.14 RT.18 Kandangan. Hulu Sungai Selatan
+ </font></center>
     <hr size="2px" color="black">
   </b></p>
     
     <h3><center><br>
-        LAPORAN DATA SEKOLAH<br> 
+    Bagian Tempat PKL Terdaftar<br> 
     </center></h3><br><br>
                     <div class="row">
                     <div class="col-sm-12">
@@ -54,10 +54,8 @@ window.print();
                                 <thead>
                                 <tr>
                                 <th>No</th>
-                                <th>Nama Sekolah</th>
-                                <th>Nama Kepsek Sekolah</th>
-                                <th>Alamat Sekolah</th>
-                                <th>No. Telp Sekolah</th>
+                                <th>Nama Bagian</th>
+                               <th>DESC</th>
                                 </tr>
                                 </thead>
 
@@ -65,10 +63,8 @@ window.print();
                                 <?php while ($row = mysqli_fetch_array($data)) { ?>
                                 <tr>
                                 <td><?= $no++ ?></td>
-                                <td><?= $row['nama_sekolah'] ?></td>
-                                <td><?= $row['nama_kepsek'] ?></td>
-                                <td><?= $row['alamat'] ?></td>
-                                <td><?= $row['no_telp'] ?></td>
+                                <td><?= $row['nama_bagian'] ?></td>
+                                <td><?= $row['deskrip'] ?></td>
                                 </tr>
                                 <?php } ?>
                                 </tbody>
@@ -79,10 +75,10 @@ window.print();
                     </div>
                 </div>
 <br>
-<label>Jumlah Sekolah Terdaftar : <?php echo "<b>".$jumlah.' Sekolah Terdaftar'."</b>"; ?></label>
+<label>Jumlah Bagian Tempat PKL Terdaftar : <?php echo "<b>".$jumlah.' Bagian Terdaftar'."</b>"; ?></label>
 <br>
 
-<?php 
+<!-- <?php 
   $datattd = $koneksi->query("SELECT * FROM ttd_uppl")->fetch_array();
 
 ?>
@@ -93,7 +89,7 @@ window.print();
     <br><br><br><br><br><br>
     <?php echo $datattd['kepalaUppl']?><br>
     NIP. <?php echo $datattd['nip']?>
-  </h5>
+  </h5> -->
 
 </div> 
 
