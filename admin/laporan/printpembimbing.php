@@ -4,8 +4,8 @@
 
     $no = 1;
 
-      $data = $koneksi->query("SELECT * FROM bagian ORDER BY id_bagian ASC");
-      $jumlah = mysqli_num_rows($data);
+      $data = $koneksi->query("SELECT * FROM pembimbing ORDER BY id_pembimbing ASC");
+    //   $jumlah = mysqli_num_rows($data);
 
 $bln = array(
         '01' => 'Januari',
@@ -31,7 +31,7 @@ window.print();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LAPORAN DATA BAGIAN</title>
+    <title>LAPORAN DATA PEMBIMBING</title>
 </head>
 <body>
 <img src="<?=base_url('assets/dist/img/logo-kalsel.png')?>" align="left" width="90" height="90">
@@ -45,7 +45,7 @@ window.print();
   </b></p>
     
     <h3><center><br>
-    Bagian Tempat PKL Terdaftar<br> 
+        LAPORAN DATA PEMBIMBING<br> 
     </center></h3><br><br>
                     <div class="row">
                     <div class="col-sm-12">
@@ -54,8 +54,8 @@ window.print();
                                 <thead>
                                 <tr>
                                 <th>No</th>
-                                <th>Nama Bagian</th>
-                               <th>DESC</th>
+                                <th>NIP/NIK</th>
+                                <th>Nama Pembimbing</th>
                                 </tr>
                                 </thead>
 
@@ -63,8 +63,8 @@ window.print();
                                 <?php while ($row = mysqli_fetch_array($data)) { ?>
                                 <tr>
                                 <td><?= $no++ ?></td>
-                                <td><?= $row['nama_bagian'] ?></td>
-                                <td><?= $row['deskrip'] ?></td>
+                                <td><?= $row['nik'] ?></td>
+                                <td><?= $row['nama_pembimbing'] ?></td>
                                 </tr>
                                 <?php } ?>
                                 </tbody>
@@ -75,11 +75,12 @@ window.print();
                     </div>
                 </div>
 <br>
-<label>Jumlah Bagian Tempat PKL Terdaftar : <?php echo "<b>".$jumlah.' Bagian Terdaftar'."</b>"; ?></label>
+<!-- <label>Jumlah Sekolah Terdaftar : <?php echo "<b>".$jumlah.' Sekolah Terdaftar'."</b>"; ?></label> -->
 <br>
 
-<!-- <?php 
-  $datattd = $koneksi->query("SELECT * FROM ttd_uppl")->fetch_array();
+<br>
+<?php 
+  $datattd = $koneksi->query("SELECT * FROM ttd_uppd")->fetch_array();
 
 ?>
 <div style="text-align: center; display: inline-block; float: right;">
@@ -87,9 +88,9 @@ window.print();
     Kandangan, <?php echo tgl_indo(date('Y-m-d')); ?><br>
     <?php echo $datattd['jabatan']?>
     <br><br><br><br><br><br>
-    <?php echo $datattd['kepalaUppl']?><br>
+    <?php echo $datattd['kepalaUppd']?><br>
     NIP. <?php echo $datattd['nip']?>
-  </h5> -->
+  </h5>
 
 </div> 
 

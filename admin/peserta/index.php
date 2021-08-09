@@ -16,7 +16,7 @@
     <div class="container-fluid">
         <div class="row">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Data Daftar PPL</h1>
+            <h1 class="m-0 text-dark">Data Daftar PKL</h1>
         </div>
 
         </div>

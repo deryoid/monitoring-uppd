@@ -4,34 +4,37 @@
 
     $no = 1;
 
-      $data = $koneksi->query("SELECT * FROM bagian ORDER BY id_bagian ASC");
-      $jumlah = mysqli_num_rows($data);
+      $data = $koneksi->query("SELECT * FROM daftarpkl AS dp 
+      LEFT JOIN peserta AS p  ON dp.id_peserta = p.id_peserta
+      LEFT JOIN bagian AS bg ON dp.id_bagian = bg.id_bagian
+      LEFT JOIN pembimbing AS pm ON dp.id_pembimbing = pm.id_pembimbing
+                               ");
 
-$bln = array(
-        '01' => 'Januari',
-        '02' => 'Februari',
-        '03' => 'Maret',
-        '04' => 'April',
-        '05' => 'Mei',
-        '06' => 'Juni',
-        '07' => 'Juli',
-        '08' => 'Agustus',
-        '09' => 'September',
-        '10' => 'Oktober',
-        '11' => 'November',
-        '12' => 'Desember'
+  $bln = array(
+          '01' => 'Januari',
+          '02' => 'Februari',
+          '03' => 'Maret',
+          '04' => 'April',
+          '05' => 'Mei',
+          '06' => 'Juni',
+          '07' => 'Juli',
+          '08' => 'Agustus',
+          '09' => 'September',
+          '10' => 'Oktober',
+          '11' => 'November',
+          '12' => 'Desember'
         );
 
-?>
+ ?>
 
-<script type="text/javascript">
-window.print();
-</script>
+ <script type="text/javascript">
+ 	window.print();
+ </script>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LAPORAN DATA BAGIAN</title>
+  <title>LAPORAN DATA PESERTA</title>
 </head>
 <body>
 <img src="<?=base_url('assets/dist/img/logo-kalsel.png')?>" align="left" width="90" height="90">
@@ -45,17 +48,21 @@ window.print();
   </b></p>
     
     <h3><center><br>
-    Bagian Tempat PKL Terdaftar<br> 
+      LAPORAN DATA STATUS AKHIR PESERTA<br> 
     </center></h3><br><br>
-                    <div class="row">
+                  <div class="row">
                     <div class="col-sm-12">
                         <div class="card-box table-responsive">
                             <table border="1" cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
                                 <th>No</th>
-                                <th>Nama Bagian</th>
-                               <th>DESC</th>
+                                <th>NPM/NIM/NIS</th>
+                                <th>Nama</th>
+                                <th>Prodi/Jurusan</th>
+                                <th>Pembimbing</th>
+                                <th>Bagian</th>
+                                <th>Status</th>
                                 </tr>
                                 </thead>
 
@@ -63,8 +70,12 @@ window.print();
                                 <?php while ($row = mysqli_fetch_array($data)) { ?>
                                 <tr>
                                 <td><?= $no++ ?></td>
+                                <td><?= $row['npm'] ?></td>
+                                <td><?= $row['nama'] ?></td>
+                                <td><?= $row['prodi'] ?></td>
+                                <td><?= $row['nama_pembimbing'] ?></td>
                                 <td><?= $row['nama_bagian'] ?></td>
-                                <td><?= $row['deskrip'] ?></td>
+                                <td><?= $row['status_akhir'] ?></td>
                                 </tr>
                                 <?php } ?>
                                 </tbody>
@@ -75,11 +86,13 @@ window.print();
                     </div>
                 </div>
 <br>
-<label>Jumlah Bagian Tempat PKL Terdaftar : <?php echo "<b>".$jumlah.' Bagian Terdaftar'."</b>"; ?></label>
+<!-- <label>Jumlah Pegawai : <?php echo "<b>".$jumlah.' Pegawai'."</b>"; ?></label> -->
 <br>
 
-<!-- <?php 
-  $datattd = $koneksi->query("SELECT * FROM ttd_uppl")->fetch_array();
+
+<br>
+<?php 
+  $datattd = $koneksi->query("SELECT * FROM ttd_uppd")->fetch_array();
 
 ?>
 <div style="text-align: center; display: inline-block; float: right;">
@@ -87,9 +100,9 @@ window.print();
     Kandangan, <?php echo tgl_indo(date('Y-m-d')); ?><br>
     <?php echo $datattd['jabatan']?>
     <br><br><br><br><br><br>
-    <?php echo $datattd['kepalaUppl']?><br>
+    <?php echo $datattd['kepalaUppd']?><br>
     NIP. <?php echo $datattd['nip']?>
-  </h5> -->
+  </h5>
 
 </div> 
 

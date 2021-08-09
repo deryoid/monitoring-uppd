@@ -4,7 +4,11 @@
 
     $no = 1;
 
-      $data = $koneksi->query("SELECT * FROM bagian ORDER BY id_bagian ASC");
+      $data = $koneksi->query("SELECT * FROM daftarpkl AS dp 
+      LEFT JOIN peserta AS m  ON dp.id_peserta = m.id_peserta
+      LEFT JOIN bagian AS s ON dp.id_bagian = s.id_bagian
+      LEFT JOIN pembimbing AS d ON dp.id_pembimbing = d.id_pembimbing
+    WHERE dp.id_pembimbing");
       $jumlah = mysqli_num_rows($data);
 
 $bln = array(
@@ -31,7 +35,7 @@ window.print();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LAPORAN DATA BAGIAN</title>
+    <title>LAPORAN DATA NILAI PESERTA</title>
 </head>
 <body>
 <img src="<?=base_url('assets/dist/img/logo-kalsel.png')?>" align="left" width="90" height="90">
@@ -44,18 +48,23 @@ window.print();
     <hr size="2px" color="black">
   </b></p>
     
-    <h3><center><br>
-    Bagian Tempat PKL Terdaftar<br> 
+  <h3><center><br>
+      LAPORAN DATA NILAI PESERTA<br> 
     </center></h3><br><br>
-                    <div class="row">
+                  <div class="row">
                     <div class="col-sm-12">
                         <div class="card-box table-responsive">
                             <table border="1" cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
                                 <th>No</th>
-                                <th>Nama Bagian</th>
-                               <th>DESC</th>
+                                <th>NPM/NIM/NIS</th>
+                                <th>Nama</th>
+                                <th>Prodi/Jurusan</th>
+                                <th>Pembimbing</th>
+                                <th>Bagian</th>
+                                <th>Nilai</th>
+                                <th>Status</th>
                                 </tr>
                                 </thead>
 
@@ -63,8 +72,13 @@ window.print();
                                 <?php while ($row = mysqli_fetch_array($data)) { ?>
                                 <tr>
                                 <td><?= $no++ ?></td>
+                                <td><?= $row['npm'] ?></td>
+                                <td><?= $row['nama'] ?></td>
+                                <td><?= $row['prodi'] ?></td>
+                                <td><?= $row['nama_pembimbing'] ?></td>
                                 <td><?= $row['nama_bagian'] ?></td>
-                                <td><?= $row['deskrip'] ?></td>
+                                <td><?= $row['nilaipkl'] ?></td>
+                                <td><?= $row['status_akhir'] ?></td>
                                 </tr>
                                 <?php } ?>
                                 </tbody>
@@ -75,11 +89,13 @@ window.print();
                     </div>
                 </div>
 <br>
-<label>Jumlah Bagian Tempat PKL Terdaftar : <?php echo "<b>".$jumlah.' Bagian Terdaftar'."</b>"; ?></label>
+<label>Jumlah Mahasiswa Yang Dinilai : <?php echo "<b>".$jumlah.' Mahasiswa Yang Dinilai'."</b>"; ?></label>
 <br>
 
-<!-- <?php 
-  $datattd = $koneksi->query("SELECT * FROM ttd_uppl")->fetch_array();
+
+<br>
+<?php 
+  $datattd = $koneksi->query("SELECT * FROM ttd_uppd")->fetch_array();
 
 ?>
 <div style="text-align: center; display: inline-block; float: right;">
@@ -87,9 +103,9 @@ window.print();
     Kandangan, <?php echo tgl_indo(date('Y-m-d')); ?><br>
     <?php echo $datattd['jabatan']?>
     <br><br><br><br><br><br>
-    <?php echo $datattd['kepalaUppl']?><br>
+    <?php echo $datattd['kepalaUppd']?><br>
     NIP. <?php echo $datattd['nip']?>
-  </h5> -->
+  </h5>
 
 </div> 
 

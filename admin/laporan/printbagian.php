@@ -31,7 +31,7 @@ window.print();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LAPORAN DATA BAGIAN</title>
+    <title>LAPORAN DATA SEKOLAH</title>
 </head>
 <body>
 <img src="<?=base_url('assets/dist/img/logo-kalsel.png')?>" align="left" width="90" height="90">

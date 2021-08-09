@@ -77,6 +77,16 @@
               </li> 
             </ul>
             <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="<?=base_url('admin/pembimbing/')?>" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Pembimbing
+              </p>
+            </a>
+          </li>
+          </ul>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?=base_url('admin/pengumuman/')?>" class="nav-link">
                   <i class="nav-icon fas fa-list-alt"></i>
@@ -130,14 +140,6 @@
           </li>
           
           <li class="nav-item">
-            <a href="<?=base_url('admin/pembimbing/')?>" class="nav-link">
-              <i class="nav-icon fas fa-list"></i>
-              <p>
-                Pembimbing
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="<?=base_url('admin/agendapeserta/')?>" class="nav-link">
               <i class="nav-icon fas fa-list-alt"></i>
               <p>
@@ -154,31 +156,50 @@
             </a>
           </li>
 
-          <!-- <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-envelope"></i>
+              <i class="nav-icon fas fa-print"></i>
               <p>
-                Surat
+                Report
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-              <a href="<?=base_url('admin/suratmasuk/')?>" class="nav-link">
-                  <i class="fas fa-envelope-square nav-icon"></i>
-                  <p>Surat Masuk</p>
+              <a href="<?=base_url('admin/laporan/printpeserta')?>" target="blank" class="nav-link">
+                  <i class="fas fa-file-alt nav-icon"></i>
+                  <p>Peserta</p>
                 </a>            
               </li>
               <li class="nav-item">
-              <a href="<?=base_url('admin/suratkeluar/')?>" class="nav-link">
-                  <i class="fas fa-envelope-square nav-icon"></i>
-                  <p>Surat Keluar</p>
+              <a href="<?=base_url('admin/laporan/printstatusakhir')?>" target="blank" class="nav-link">
+                  <i class="fas fa-file-alt nav-icon"></i>
+                  <p>Status Akhir Peserta</p>
+                </a>            
+              </li>
+              <li class="nav-item">
+              <a href="<?=base_url('admin/laporan/printbagian')?>" target="blank" class="nav-link">
+                  <i class="fas fa-file-alt nav-icon"></i>
+                  <p>Tempat Bagian PKL</p>
+                </a>            
+              </li>
+              <li class="nav-item">
+              <a href="<?=base_url('admin/laporan/printpembimbing')?>" target="blank" class="nav-link">
+                  <i class="fas fa-file-alt nav-icon"></i>
+                  <p>Pembimbing</p>
+                </a>            
+              </li>
+              <li class="nav-item">
+              <a href="<?=base_url('admin/laporan/printpenilaianpkl')?>" target="blank" class="nav-link">
+                  <i class="fas fa-file-alt nav-icon"></i>
+                  <p>Penilaian PKL</p>
                 </a>            
               </li>
 
+
             </ul>
-          </li>   -->
+          </li>  
 
         </ul>
       </nav>
