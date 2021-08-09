@@ -93,7 +93,7 @@ window.print();
 ?>
 <div style="text-align: center; display: inline-block; float: right;">
   <h5>
-    Banjarmasin , <?php echo tgl_indo(date('Y-m-d')); ?><br>
+    Kandangan, <?php echo tgl_indo(date('Y-m-d')); ?><br>
     <?php echo $datattd['jabatan']?>
     <br><br><br><br><br><br>
     <?php echo $datattd['kepalaUppl']?><br>

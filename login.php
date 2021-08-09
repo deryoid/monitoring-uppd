@@ -36,7 +36,7 @@ require 'config/config.php';
         <h3>
         <b>UPPD SAMSAT KANDANGAN</b>
           <img src="<?= base_url() ?>/assets/dist/img/logo-kalsel.png" style="margin-top: 20px; margin-bottom: 20px;" width="210px;" height="200px;"><br>
-          <b>Aplikasi Monitoring Peserta <br> Praktrik Kerja Lapangan</b></h3>
+          <b>Aplikasi Monitoring Peserta <br> Praktek Kerja Lapangan</b></h3>
       </div>
       <div class="card-body login-card-body">
         <!-- <p class="login-box-msg">Sign in to start your session</p> -->
