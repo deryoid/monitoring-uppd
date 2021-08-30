@@ -13,9 +13,10 @@ session_start();
      	unset($_SESSION["id_user"]);
      	unset($_SESSION["id_peserta"]);
 
+     }elseif ($_SESSION['role'] == "Pimpinan") {
+      $_SESSION['id_user'];  
+    unset($_SESSION["id_user"]);
      }
-
-
 
 
 

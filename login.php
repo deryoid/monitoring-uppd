@@ -135,6 +135,10 @@ if (isset($_POST['login'])) {
         $_SESSION['id_user']   = $id_user;
         $_SESSION['role'] = $role;
         echo "<script>window.location.replace('admin/');</script>";
+}elseif ($role == "Pimpinan") {
+  $_SESSION['id_user']   = $id_user;
+  $_SESSION['role'] = $role;
+  echo "<script>window.location.replace('pimpinan/');</script>";
 }
   } else {
     $_SESSION['pesan'] = 'Username atau Password Tidak Ditemukan';

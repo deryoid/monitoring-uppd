@@ -23,7 +23,9 @@
                   }elseif ($_SESSION['role'] == "Peserta") {
                     $data = $koneksi->query("SELECT * FROM peserta WHERE id_peserta = '$_SESSION[id_peserta]'")->fetch_array();
                     echo $data['nama'];
-                  }  
+                  } elseif ($_SESSION['role'] == "Pimpinan") {
+                    echo "Pimpinan";
+                  }
               ?>
           </i>
         </a>
@@ -147,14 +149,14 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="<?=base_url('admin/nilaipeserta/')?>" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Penilaian PKL
               </p>
             </a>
-          </li>
+          </li> -->
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -292,8 +294,82 @@
       </nav>
       <!-- /.sidebar-menu -->
 
-    <?php } ?>
+    <?php }elseif ($_SESSION['role'] == "Pimpinan") {  ?>
 
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="<?=base_url('pimpinan/index')?>" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p>
+                Home
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?=base_url('pimpinan/nilaipeserta/')?>" class="nav-link">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                Penilaian PKL
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-print"></i>
+              <p>
+                Report
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+              <a href="<?=base_url('pimpinan/laporan/printpeserta')?>" target="blank" class="nav-link">
+                  <i class="fas fa-file-alt nav-icon"></i>
+                  <p>Peserta</p>
+                </a>            
+              </li>
+              <li class="nav-item">
+              <a href="<?=base_url('pimpinan/laporan/printstatusakhir')?>" target="blank" class="nav-link">
+                  <i class="fas fa-file-alt nav-icon"></i>
+                  <p>Status Akhir Peserta</p>
+                </a>            
+              </li>
+              <li class="nav-item">
+              <a href="<?=base_url('pimpinan/laporan/printbagian')?>" target="blank" class="nav-link">
+                  <i class="fas fa-file-alt nav-icon"></i>
+                  <p>Tempat Bagian PKL</p>
+                </a>            
+              </li>
+              <li class="nav-item">
+              <a href="<?=base_url('pimpinan/laporan/printpembimbing')?>" target="blank" class="nav-link">
+                  <i class="fas fa-file-alt nav-icon"></i>
+                  <p>Pembimbing</p>
+                </a>            
+              </li>
+              <li class="nav-item">
+              <a href="<?=base_url('pimpinan/laporan/printpenilaianpkl')?>" target="blank" class="nav-link">
+                  <i class="fas fa-file-alt nav-icon"></i>
+                  <p>Penilaian PKL</p>
+                </a>            
+              </li>
+
+
+            </ul>
+          </li>  
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+
+
+    <?php }?>
     </div>
     <!-- /.sidebar -->
   </aside>
